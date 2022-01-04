@@ -1,0 +1,273 @@
+@model GoBattleLeagueTeamBuilder.Models.Pokedex
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Pokedex</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PokemonId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PokemonId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Form)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Form)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BaseAtk)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BaseAtk)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BaseDef)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BaseDef)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.BaseSta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BaseSta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlatkIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlatkIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LldefIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LldefIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlstaIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlstaIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Lllevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Lllevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlcP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlcP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlatkStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlatkStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LldefStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LldefStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlstaStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlstaStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LlstatProduct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LlstatProduct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlatkIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlatkIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GldefIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GldefIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlstaIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlstaIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gllevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Gllevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlcP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlcP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlatkStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlatkStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GldefStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GldefStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlstaStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlstaStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GlstatProduct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GlstatProduct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlatkIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlatkIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UldefIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UldefIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlstaIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlstaIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ullevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ullevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlcP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlcP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlatkStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlatkStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UldefStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UldefStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlstaStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlstaStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlstatProduct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlstatProduct)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicatkIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicatkIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicdefIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicdefIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicstaIv)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicstaIv)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Ulclassiclevel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Ulclassiclevel)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassiccP)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassiccP)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicatkStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicatkStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicdefStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicdefStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicstaStat)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicstaStat)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UlclassicstatProduct)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UlclassicstatProduct)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

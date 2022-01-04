@@ -1,0 +1,281 @@
+@model IEnumerable<GoBattleLeagueTeamBuilder.Models.Pokedex>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PokemonId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Form)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseAtk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseDef)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseSta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlatkIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LldefIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlstaIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Lllevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlcP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlatkStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LldefStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlstaStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LlstatProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlatkIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GldefIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlstaIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gllevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlcP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlatkStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GldefStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlstaStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GlstatProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlatkIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UldefIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlstaIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ullevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlcP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlatkStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UldefStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlstaStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlstatProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicatkIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicdefIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicstaIv)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ulclassiclevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassiccP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicatkStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicdefStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicstaStat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UlclassicstatProduct)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.PokemonId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Form)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseAtk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseDef)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BaseSta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlatkIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LldefIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlstaIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lllevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlcP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlatkStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LldefStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlstaStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LlstatProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlatkIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GldefIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlstaIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gllevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlcP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlatkStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GldefStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlstaStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GlstatProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlatkIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UldefIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlstaIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ullevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlcP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlatkStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UldefStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlstaStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlstatProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicatkIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicdefIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicstaIv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ulclassiclevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassiccP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicatkStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicdefStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicstaStat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UlclassicstatProduct)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

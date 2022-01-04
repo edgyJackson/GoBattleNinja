@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<div class="menu-area text-center stack-top">
+    <h1 class="display-4" id="headerText">Choose a League</h1>
+    <ul>
+        <li>
+            <a href="#" id="all">Little League</a>           
+        </li>
+        <li>
+            <a href="#" id="all">Great League</a>
+            <ul class="dropdown">
+                <li><a href="#" id="remix">Great League Remix</a></li>
+                <li><a href="#" id="kanto">Kanto</a></li>
+                <li><a href="#" id="holiday">Holiday</a></li>
+                <li>Amelya</li>
+                <li>Walter</li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="all">Ultra League</a>
+            <ul class="dropdown">
+                <li><a href="#" id="remix">Ultra League Remix</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" id="all">Master League</a>
+            <ul class="dropdown">
+                <li><a href="#" id="classic">Master League Classic</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="MainBox"></div>
+
+@section Scripts {
+    <script src="/js/MainBox.js"></script>    
+}
