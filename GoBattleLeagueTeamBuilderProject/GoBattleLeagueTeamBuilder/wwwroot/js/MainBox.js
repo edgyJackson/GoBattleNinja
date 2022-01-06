@@ -35,6 +35,7 @@ $(document).ready(function()
                 var pokemonForm = "";
                 var shadowOrPurifiedOrXL = "";
                 var match = "";
+                var ThePokemonsID = "";
 
                 //get the pokemons name string from pvpoke json set pokemon form and shadowpurifiedxl to default
                 speciesNameString = data[i].speciesName;
@@ -58,12 +59,10 @@ $(document).ready(function()
                     } else {
                         var pokedexMon = pokedex.filter(obj => obj.pokemonId == 32 && obj.name == pokemonName);
                     }
-                } else if (pokemonName.includes('Darmanitan')) {
-                    if (data[i].speciesId.includes('galarian_standard')) {
-                        var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_standard' && obj.name == pokemonName);
-                    } else if (data[i].speciesId.includes('galarian_zen')) {
-                        var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_zen' && obj.name == pokemonName);
-                    }                   
+                } else if (data[i].speciesId.includes('galarian_standard')) {                   
+                    var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_standard' && obj.name == pokemonName);
+                } else if (data[i].speciesId.includes('galarian_zen')) {
+                    var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_zen' && obj.name == pokemonName);
                 } else if (match == "" || match[2] == "Shadow" || match[2] == "Jr") {
                     var pokedexMon = pokedex.filter(obj => obj.name == pokemonName && obj.form == "Normal");
                 } else {
@@ -71,7 +70,7 @@ $(document).ready(function()
                 }
 
                 //get the pokemons id for the mainbox string concatenation
-                var ThePokemonsID = String(pokedexMon[0].pokemonId).padStart(3, '0');
+                ThePokemonsID = String(pokedexMon[0].pokemonId).padStart(3, '0');
 
                 //check for shadow
                 if (match[2] == "Shadow") {
@@ -103,9 +102,9 @@ $(document).ready(function()
                             shadowOrPurifiedOrXL = shadowOrPurifiedOrXL + "<div class=\"XLDiv\">XL</div>";
                     }
                 }
-
+                
                 //print the html to the dom
-                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png\"/\">" + shadowOrPurifiedOrXL + "</div></a>");
+                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + "_shiny.png\"/\">" + shadowOrPurifiedOrXL + "</div></a>");
             }          
         });
     });
