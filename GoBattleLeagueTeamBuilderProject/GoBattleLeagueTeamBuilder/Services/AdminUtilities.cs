@@ -62,6 +62,26 @@ namespace GoBattleLeagueTeamBuilder.Services
             }
         }
 
+        public async Task GreatLeagueClassicAsync()
+        {
+            for (int i = 951; i < 952/*_pokedex.GetCount()*/; i++)
+            {
+                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
+                var TheIVPerformance = _pvpIVAPI.getBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
+
+                pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
+                pokedexEntry.GlclassicdefIv = TheIVPerformance.iVS.defIV;
+                pokedexEntry.GlclassicstaIv = TheIVPerformance.iVS.staIV;
+                pokedexEntry.Glclassiclevel = TheIVPerformance.level;
+                pokedexEntry.GlclassiccP = TheIVPerformance.cP;
+                pokedexEntry.GlclassicatkStat = TheIVPerformance.stats.atkStat;
+                pokedexEntry.GlclassicdefStat = TheIVPerformance.stats.defStat;
+                pokedexEntry.GlclassicstaStat = TheIVPerformance.stats.staStat;
+                pokedexEntry.GlclassicstatProduct = TheIVPerformance.statProduct;
+                await _repo.AddOrUpdateAsync(pokedexEntry);
+            }
+        }
+
         public async Task UltraLeagueAsync()
         {
             for (int i = 1; i < _pokedex.GetCount(); i++)
@@ -144,7 +164,7 @@ namespace GoBattleLeagueTeamBuilder.Services
                 //Write a line of text
                 foreach (var item in _repo.GetAll())
                 {
-                    sw.WriteLine("(" + item.PokemonId + ",'" + item.Name + "','" + item.Form + "'," + item.BaseAtk + "," + item.BaseDef + "," + item.BaseSta + "," + item.LlatkIv + "," + item.LldefIv + "," + item.LlstaIv + "," + item.Lllevel + "," + item.LlcP + "," + item.LlatkStat + "," + item.LldefStat + "," + item.LlstaStat + "," + item.LlstatProduct + "," + item.GlatkIv + "," + item.GldefIv + "," + item.GlstaIv + "," + item.Gllevel + "," + item.GlcP + "," + item.GlatkStat + "," + item.GldefStat + "," + item.GlstaStat + "," + item.GlstatProduct + "," + item.UlatkIv + "," + item.UldefIv + "," + item.UlstaIv + "," + item.Ullevel + "," + item.UlcP + "," + item.UlatkStat + "," + item.UldefStat + "," + item.UlstaStat + "," + item.UlstatProduct + "," + item.UlclassicatkIv + "," + item.UlclassicdefIv + "," + item.UlclassicstaIv + "," + item.Ulclassiclevel + "," + item.UlclassiccP + "," + item.UlclassicatkStat + "," + item.UlclassicdefStat + "," + item.UlclassicstaStat + "," + item.UlclassicstatProduct + ")");
+                    sw.WriteLine("(" + item.PokemonId + ",'" + item.Name + "','" + item.Form + "'," + item.BaseAtk + "," + item.BaseDef + "," + item.BaseSta + "," + item.LlatkIv + "," + item.LldefIv + "," + item.LlstaIv + "," + item.Lllevel + "," + item.LlcP + "," + item.LlatkStat + "," + item.LldefStat + "," + item.LlstaStat + "," + item.LlstatProduct + "," + item.GlatkIv + "," + item.GldefIv + "," + item.GlstaIv + "," + item.Gllevel + "," + item.GlcP + "," + item.GlatkStat + "," + item.GldefStat + "," + item.GlstaStat + "," + item.GlstatProduct + "," + item.UlatkIv + "," + item.UldefIv + "," + item.UlstaIv + "," + item.Ullevel + "," + item.UlcP + "," + item.UlatkStat + "," + item.UldefStat + "," + item.UlstaStat + "," + item.UlstatProduct + "," + item.UlclassicatkIv + "," + item.UlclassicdefIv + "," + item.UlclassicstaIv + "," + item.Ulclassiclevel + "," + item.UlclassiccP + "," + item.UlclassicatkStat + "," + item.UlclassicdefStat + "," + item.UlclassicstaStat + "," + item.UlclassicstatProduct + item.GlclassicatkIv + "," + item.GlclassicdefIv + "," + item.GlclassicstaIv + "," + item.Glclassiclevel + "," + item.GlclassiccP + "," + item.GlclassicatkStat + "," + item.GlclassicdefStat + "," + item.GlclassicstaStat + "," + item.GlclassicstatProduct + "),");
                 }
                 
                 //Close the file

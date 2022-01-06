@@ -9,6 +9,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
     {
         Task littleLeagueAsync();
         Task GreatLeagueAsync();
+        Task GreatLeagueClassicAsync();
         Task UltraLeagueAsync();
         Task UltraLeagueClassicAsync();
         void generatePokedexSeedFileWithBaseStats();

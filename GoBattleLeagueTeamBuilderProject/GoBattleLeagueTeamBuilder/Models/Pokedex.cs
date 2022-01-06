@@ -50,5 +50,14 @@ namespace GoBattleLeagueTeamBuilder.Models
         public double? UlclassicdefStat { get; set; }
         public double? UlclassicstaStat { get; set; }
         public double? UlclassicstatProduct { get; set; }
+        public double? GlclassicatkIv { get; set; }
+        public double? GlclassicdefIv { get; set; }
+        public double? GlclassicstaIv { get; set; }
+        public double? Glclassiclevel { get; set; }
+        public int? GlclassiccP { get; set; }
+        public double? GlclassicatkStat { get; set; }
+        public double? GlclassicdefStat { get; set; }
+        public double? GlclassicstaStat { get; set; }
+        public double? GlclassicstatProduct { get; set; }
     }
 }

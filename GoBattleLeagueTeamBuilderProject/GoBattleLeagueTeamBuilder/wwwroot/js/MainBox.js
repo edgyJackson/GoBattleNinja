@@ -24,23 +24,26 @@ $(document).ready(function()
 
         document.getElementById("headerText").innerText = this.textContent;
         var LeagueSelected = this.textContent;
+        //for shiny button
+        var shiny = "";
         $.getJSON(jsonString, function(data) {
            
             $(".MainBox").empty();
 
             
-            for (i = 0;i < 950; i++) {      
+            for (i = 0;i < 25; i++) {      
                 var speciesNameString = "";
                 var pokemonName = "";
                 var pokemonForm = "";
-                var shadowOrPurifiedOrXL = "";
+                var shadowOrPurifiedOrXLBuddy = "";
                 var match = "";
                 var ThePokemonsID = "";
+                var BestBuddy = "";
 
                 //get the pokemons name string from pvpoke json set pokemon form and shadowpurifiedxl to default
                 speciesNameString = data[i].speciesName;
                 pokemonForm = "00";
-                shadowOrPurifiedOrXL = "";              
+                shadowOrPurifiedOrXLBuddy = "";              
 
                 //check if the pokemon has a form if some parse out the form and name
                 if (!speciesNameString.includes("(")) {
@@ -74,40 +77,59 @@ $(document).ready(function()
 
                 //check for shadow
                 if (match[2] == "Shadow") {
-                    shadowOrPurifiedOrXL = "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
+                    shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     }
                 //check for purified
                 if (data[i].moveset.includes("RETURN")) {
-                    shadowOrPurifiedOrXL = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
+                    shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
-                //check for XL
+                //check for XL and best buddy in all non classic leagues
                 if (!data[i].speciesId.includes("_xs")) {
 
-                    if (LeagueSelected == "Little League" || LeagueSelected == "Little League Premier Classic" ) {
+                    if (LeagueSelected == "Little League") {
                         if (pokedexMon[0].lllevel > 41) {
-                            shadowOrPurifiedOrXL = shadowOrPurifiedOrXL + "<div class=\"XLDiv\">XL</div>";
+                            shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<div class=\"XLDiv\">XL</div>";
+                            if (pokedexMon[0].lllevel == 51 || pokedexMon[0].lllevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                         }
                     }
-                    else if (LeagueSelected == "Great League" || LeagueSelected == "Great League Remix" || LeagueSelected == "Kanto" || LeagueSelected == "Holiday" || LeagueSelected == "Great League Premier Classic") {
+                    else if (LeagueSelected == "Great League" || LeagueSelected == "Great League Remix" || LeagueSelected == "Kanto" || LeagueSelected == "Holiday") {
                         if (pokedexMon[0].gllevel > 41) {
-                            shadowOrPurifiedOrXL = shadowOrPurifiedOrXL + "<div class=\"XLDiv\">XL</div>";
+                            shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<div class=\"XLDiv\">XL</div>";
+                            if (pokedexMon[0].gllevel == 51 || pokedexMon[0].gllevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                         }
                     }
                     else if (LeagueSelected == "Ultra League" || LeagueSelected == "Ultra League Remix" || LeagueSelected == "Ultra League Premier") {
                         if (pokedexMon[0].ullevel > 41) {
-                            shadowOrPurifiedOrXL = shadowOrPurifiedOrXL + "<div class=\"XLDiv\">XL</div>";
+                            shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<div class=\"XLDiv\">XL</div>";
+                            if (pokedexMon[0].ullevel == 51 || pokedexMon[0].ullevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                         }
                     }
                     else if (LeagueSelected == "Master League" || LeagueSelected == "Master League Premier") {
-                            shadowOrPurifiedOrXL = shadowOrPurifiedOrXL + "<div class=\"XLDiv\">XL</div>";
+                        shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<div class=\"XLDiv\">XL</div>" + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
+                    }
+                }
+
+                //check for best buddy in all classic leagues still need to add great league classic iv's to db
+                if (!data[i].speciesId.includes("_xs")) {
+
+                    if (LeagueSelected == "Little League Premier Classic") {
+                        if (pokedexMon[0].lllevel == 41 || pokedexMon[0].lllevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
+                    }
+   /*                 else if (LeagueSelected == "Great League Premier Classic") {
+                        if (pokedexMon[0].gllevel == 41 || pokedexMon[0].gllevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
+                    }*/
+                    else if (LeagueSelected == "Ultra League Premier Classic") {
+                        if (pokedexMon[0].ulclassiclevel == 41 || pokedexMon[0].ulclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
+                    }
+                    else if (LeagueSelected == "Master League Premier Classic" || LeagueSelected == "Master League Classic") {
+                        shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; 
                     }
                 }
                 
                 //print the html to the dom
-                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + "_shiny.png\"/\">" + shadowOrPurifiedOrXL + "</div></a>");
+                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png\"/\">" + shadowOrPurifiedOrXLBuddy + "</div></a>");
             }          
         });
     });
 });
-
 

@@ -42,6 +42,15 @@ CREATE TABLE [Pokedex] (
   [ULClassicdefSTAT] float,
   [ULClassicstaSTAT] float,
   [ULClassicstatProduct] float,
+  [GLClassicatkIV] float,
+  [GLClassicdefIV] float,
+  [GLClassicstaIV] float,
+  [GLClassiclevel] float,
+  [GLClassiccP] int,
+  [GLClassicatkSTAT] float,
+  [GLClassicdefSTAT] float,
+  [GLClassicstaSTAT] float,
+  [GLClassicstatProduct] float,
 )
 GO
 

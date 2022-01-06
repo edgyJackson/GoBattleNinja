@@ -45,6 +45,24 @@ namespace GoBattleLeagueTeamBuilder.Models
 
                 entity.Property(e => e.GlcP).HasColumnName("GLcP");
 
+                entity.Property(e => e.GlclassicatkIv).HasColumnName("GLClassicatkIV");
+
+                entity.Property(e => e.GlclassicatkStat).HasColumnName("GLClassicatkSTAT");
+
+                entity.Property(e => e.GlclassiccP).HasColumnName("GLClassiccP");
+
+                entity.Property(e => e.GlclassicdefIv).HasColumnName("GLClassicdefIV");
+
+                entity.Property(e => e.GlclassicdefStat).HasColumnName("GLClassicdefSTAT");
+
+                entity.Property(e => e.Glclassiclevel).HasColumnName("GLClassiclevel");
+
+                entity.Property(e => e.GlclassicstaIv).HasColumnName("GLClassicstaIV");
+
+                entity.Property(e => e.GlclassicstaStat).HasColumnName("GLClassicstaSTAT");
+
+                entity.Property(e => e.GlclassicstatProduct).HasColumnName("GLClassicstatProduct");
+
                 entity.Property(e => e.GldefIv).HasColumnName("GLdefIV");
 
                 entity.Property(e => e.GldefStat).HasColumnName("GLdefSTAT");

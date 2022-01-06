@@ -24,7 +24,8 @@ namespace GoBattleLeagueTeamBuilder.Controllers
         }
 
         public IActionResult Index()
-        {          
+        {
+            /*_AdminUtilities.generatePokedexSeedFileWithBestIVs();*/
             return View();
         }
 

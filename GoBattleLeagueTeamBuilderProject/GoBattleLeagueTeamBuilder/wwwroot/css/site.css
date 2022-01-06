@@ -263,3 +263,11 @@ body {
     font-size: 24px;
     color: white;
 }
+
+.BestBuddy {
+    position: absolute;
+    top: 4px;
+    margin: auto;
+    width: 17%;
+    height: 17%
+}
