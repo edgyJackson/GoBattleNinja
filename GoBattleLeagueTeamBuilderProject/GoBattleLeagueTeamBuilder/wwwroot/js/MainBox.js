@@ -126,7 +126,7 @@ $(document).ready(function()
                     }
                 }
                 
-                //print the html to the dom
+                //dynamicallt paste the the html to the view 
                 $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png\"/\">" + shadowOrPurifiedOrXLBuddy + "</div></a>");
             }          
         });
