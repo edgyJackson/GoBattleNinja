@@ -115,9 +115,9 @@ $(document).ready(function()
                     if (LeagueSelected == "Little League Premier Classic") {
                         if (pokedexMon[0].lllevel == 41 || pokedexMon[0].lllevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                     }
-   /*                 else if (LeagueSelected == "Great League Premier Classic") {
-                        if (pokedexMon[0].gllevel == 41 || pokedexMon[0].gllevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
-                    }*/
+                    else if (LeagueSelected == "Great League Premier Classic") {
+                        if (pokedexMon[0].glclassiclevel == 41 || pokedexMon[0].glclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
+                    }
                     else if (LeagueSelected == "Ultra League Premier Classic") {
                         if (pokedexMon[0].ulclassiclevel == 41 || pokedexMon[0].ulclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                     }
