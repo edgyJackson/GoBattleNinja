@@ -1,0 +1,14 @@
+fighting --> rock, dark
+Flying --> Fighting, bug grass
+poison --> grass, fairy
+ground --> poison, rock
+rock --> flying, fire
+bug --> grass
+steel --> rock, ice fairy
+fire --> bug, steel, grass, ice
+water --> fire
+grass --> ground, water
+electric --> flying
+psychic--> fighting
+dark --> psychic, ghost
+fairy --> dragon, fighting, dark

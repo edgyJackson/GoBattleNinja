@@ -139,7 +139,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
-                StreamWriter sw = new("output2.txt");
+                StreamWriter sw = new("output.txt");
 
                 //Write a line of text
                 foreach (var item in _repo.GetAll())

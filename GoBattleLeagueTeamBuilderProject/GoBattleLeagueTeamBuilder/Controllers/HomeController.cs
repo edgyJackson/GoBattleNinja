@@ -23,13 +23,8 @@ namespace GoBattleLeagueTeamBuilder.Controllers
             _AdminUtilities = AdminUtilities;
         }
 
-        public async Task<IActionResult> IndexAsync()
-        {
-            
-          /*await _AdminUtilities.UltraLeagueClassicAsync();*/
-
-            /*var greatestLLPokemon = _pokedex.GetPokemonWithHighestLLStatProduct();*/
-
+        public IActionResult Index()
+        {          
             return View();
         }
 
