@@ -2,7 +2,7 @@
 Pokemon Go Battle League team builder, training and simulation tool 
 
 # Description
-For Pokemon GO players who need access to pertinent information related to competing in Go Battle League. Go Battle Ninja is an information and training system that will allow users to calculate the best pokemon and IV's for every league/cup. Study the "fast-move timing" mechanics, Charge Move Priority(CMP) ranks, and battle simulations, OR generate teams and strategies all in one place. 
+For Pokemon GO players who need access to pertinent information related to battling. Go Battle Ninja is an information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
 
 # Table of Contents
@@ -22,13 +22,12 @@ For Pokemon GO players who need access to pertinent information related to compe
 - [License](#license)
 
 # Background
-Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player.   
+Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player. I wanted to know whether I needed my Scrafty for ultra league to be XL'd or "Best Buddies". The process to get the answer to this question was complicated so I decided to create an information and training hub that provides easy access to pokemon data, trends and knowledge that otherwise may be rather,... complicated to find. 
 
 ### Techonlogies used:
-- https://github.com/pvpoke/pvpoke json endpoints for league rankings
+- https://github.com/pvpoke/pvpoke (PVPOKE)json endpoints for league rankings
 - https://pokeapi.co/ for current pokemon go data
-Pokeminers 
-- https://github.com/PokeMiners for pokemon go assets and the most recent gamemaster json
+- https://github.com/PokeMiners (PokeMiners)for pokemon go assets and the most recent gamemaster json
 - Pokemon Stat product algorythm
 
 # Contributing
