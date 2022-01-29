@@ -24,12 +24,12 @@ For Pokemon GO players who need access to pertinent information related to compe
 # Background
 Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player.   
 
-Techonlogies used:
-https://github.com/pvpoke/pvpoke json endpoints for league rankings
-https://pokeapi.co/ for current pokemon go data
+### Techonlogies used:
+- https://github.com/pvpoke/pvpoke json endpoints for league rankings
+- https://pokeapi.co/ for current pokemon go data
 Pokeminers 
-https://github.com/PokeMiners for pokemon go assets and the most recent gamemaster json
-Pokemon Stat product algorythms 
+- https://github.com/PokeMiners for pokemon go assets and the most recent gamemaster json
+- Pokemon Stat product algorythm
 
 # Contributing
 ## Overall
@@ -95,5 +95,5 @@ Pokemon Stat product algorythms
 # License 
 LGPL-3.0-or-later
 
-For more info see <a href="https://github.com/NickApa/NATRSS/blob/dev/COPYING.LESSER.txt">License.md</a> file
+For more info see <a href="https://github.com/edgyJackson/GoBattleNinja/blob/main/COPYING.LESSER.txt">License.md</a> file
 
