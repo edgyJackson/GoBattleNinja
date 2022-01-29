@@ -1,8 +1,5 @@
-# GoBattleNinja
-Pokemon Go Battle League team builder, training and simulation tool 
-
-# Description
-For Pokemon GO players who need access to pertinent information related to battling. Go Battle Ninja is an information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
+# Go Battle Ninja
+Pokemon Go Battle League team builder, training and simulation tool for Pokemon GO players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
 
 # Table of Contents
