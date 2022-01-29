@@ -25,9 +25,9 @@ For Pokemon GO players who need access to pertinent information related to battl
 Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player. I wanted to know whether I needed my Scrafty for ultra league to be XL'd or "Best Buddies". The process to get the answer to this question was complicated so I decided to create an information and training hub that provides easy access to pokemon data, trends and knowledge that otherwise may be rather,... complicated to find. 
 
 ### Techonlogies used:
-- https://github.com/pvpoke/pvpoke (PVPOKE)json endpoints for league rankings
+- https://github.com/pvpoke/pvpoke (PVPOKE) json endpoints for league rankings
 - https://pokeapi.co/ for current pokemon go data
-- https://github.com/PokeMiners (PokeMiners)for pokemon go assets and the most recent gamemaster json
+- https://github.com/PokeMiners (PokeMiners) for pokemon go assets and the most recent gamemaster json
 - Pokemon Stat product algorythm
 
 # Contributing
