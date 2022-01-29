@@ -1,5 +1,5 @@
 # Go Battle Ninja
-Pokemon Go Battle League team builder, training and simulation tool for Pokemon GO players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
+Pokemon Go team builder, training and simulation tool for players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
 
 # Table of Contents
@@ -8,7 +8,6 @@ Pokemon Go Battle League team builder, training and simulation tool for Pokemon 
     - [Overall](#overall)
     - [C# Style](#c#-style)
     - [HTML Style](#html-style)
-    - [CSS Style](#css-style)
     - [JavaScript Style](#javascript-style)
     - [SQL Style](#sql-style)
     - [Git](#git)
@@ -45,11 +44,6 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 - Follow color schema that is chosen in advance
 - id names will be camel case - "variableName"
 
-## CSS Style
-- Format using in-line styling
-- size things using % do not use px or ef
-- Format after you get your functional code working
-
 ## JavaScript Style
 - Function names in camel case - "functionName"
 - Variable names in camel case - "variableName"
@@ -58,8 +52,8 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 
 ## SQL Style
 - Primary keys will be named 'ID'
-- Foreign Keys will include the table and ID where it came from - "ChemicalID"
-- Constraints will be sperated by a '_' - "Form_FK_Chemical"
+- Foreign Keys will include the table and ID where it came from - "PokemonID"
+- Constraints will be sperated by a '_' - "Pokemon_FK_Matchups"
 
 ## GIT
 - Use separate feature branches.
