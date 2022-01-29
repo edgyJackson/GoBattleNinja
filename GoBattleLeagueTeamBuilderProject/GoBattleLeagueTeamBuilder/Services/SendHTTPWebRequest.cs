@@ -10,7 +10,7 @@ namespace GoBattleLeagueTeamBuilder.Services
 {
     public class SendHTTPWebRequest : ISendHTTPWebRequest
     {
-        public string getJsonFromUrl(string url)
+        public string GetJsonFromUrl(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             string jsonString = null;
@@ -18,7 +18,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             using (WebResponse response = request.GetResponse())
             {
                 Stream stream = response.GetResponseStream();
-                StreamReader reader = new StreamReader(stream);
+                StreamReader reader = new(stream);
                 jsonString = reader.ReadToEnd();
                 reader.Close();
                 stream.Close();

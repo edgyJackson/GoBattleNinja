@@ -7,5 +7,10 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
 {
     public class GameMasterRepository
     {
+        /*JArray GetGameMasterFile()
+        {
+            
+            
+        }*/
     }
 }

@@ -8,22 +8,22 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
 {
     public class PVP_IVsAPIRepository : IPVP_IVsAPIRepository
     {
-        public void printBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        public void PrintBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
         {
-            List<IVPerformance> IVPerformanceList = getAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
+            List<IVPerformance> IVPerformanceList = GetAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
             IVPerformanceList.OrderBy(o => o.statProduct);
 
             Console.WriteLine(IVPerformanceList.Take(25));
         }
 
-        public IVPerformance getBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        public IVPerformance GetBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
         {
-            List<IVPerformance> IVPerformanceList = getAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
+            List<IVPerformance> IVPerformanceList = GetAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
             return IVPerformanceList.OrderByDescending(o => o.statProduct).FirstOrDefault();
           
         }
 
-        private List<IVPerformance> getAllIVTokens(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        private List<IVPerformance> GetAllIVTokens(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
         {
             List<IVPerformance> IVPerformanceList = new();
            
@@ -33,7 +33,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
                 {               
                     for (int staIV = 0; staIV <= 15; staIV++)
                     {
-                        IVPerformanceList.Add(getPerformanceFromIV(league, baseAtk, atkIV, baseDef, defIV, baseSta, staIV, xLStatus));
+                        IVPerformanceList.Add(GetPerformanceFromIV(league, baseAtk, atkIV, baseDef, defIV, baseSta, staIV, xLStatus));
                     }
                 }
             }
@@ -41,16 +41,16 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
             return IVPerformanceList;
         }
 
-        private IVPerformance getPerformanceFromIV(int league, int baseAtk, int atkIV, int baseDef, int defIV, int baseSta, int staIV, float xLStatus)
+        private IVPerformance GetPerformanceFromIV(int league, int baseAtk, int atkIV, int baseDef, int defIV, int baseSta, int staIV, float xLStatus)
         {
             IVPerformance bestPerformance = new();
             for (float level = 1f; level <= xLStatus; level += 0.5f)
             {
-                float atkStat = getStat(level, baseAtk, atkIV);
-                float defStat = getStat(level, baseDef, defIV);
-                float staStat = getStat(level, baseSta, staIV);
+                float atkStat = GetStat(level, baseAtk, atkIV);
+                float defStat = GetStat(level, baseDef, defIV);
+                float staStat = GetStat(level, baseSta, staIV);
 
-                int cp = getCP(atkStat, defStat, staStat, level);
+                int cp = GetCP(atkStat, defStat, staStat);
                 if (league < cp) return bestPerformance;
 
                 IVPerformance currentPerformance = new()
@@ -76,12 +76,12 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
             return bestPerformance;
         }
 
-        private int getCP(float atk, float def, float sta, float level)
+        private static int GetCP(float atk, float def, float sta)
         {
             return (int)(Math.Floor(atk * Math.Sqrt(def)* Math.Sqrt(sta))/10);
         }
 
-        private float getStat(float level, int baseInt, int iv)
+        private float GetStat(float level, int baseInt, int iv)
         {
             return (baseInt + iv) * CPMultiplyer[level];
         }

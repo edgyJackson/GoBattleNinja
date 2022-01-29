@@ -7,12 +7,12 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
 {
     public interface IAdminUtilities
     {
-        Task littleLeagueAsync();
+        Task LittleLeagueAsync();
         Task GreatLeagueAsync();
         Task GreatLeagueClassicAsync();
         Task UltraLeagueAsync();
         Task UltraLeagueClassicAsync();
-        void generatePokedexSeedFileWithBaseStats();
-        void generatePokedexSeedFileWithBestIVs();
+        void GeneratePokedexSeedFileWithBaseStats();
+        void GeneratePokedexSeedFileWithBestIVs();
     }
 }

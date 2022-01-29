@@ -76,6 +76,10 @@ body {
   line-height: 60px; /* Vertically center the text there */
 }
 
+#headerText {
+    font-weight: bold;
+    color: #000;
+}
 
 .menu-area ul {
     list-style: none;
@@ -98,8 +102,8 @@ body {
     padding: 0;
     margin: 0;
     display: inline-block;
-    background: #313131;
-    color: #fff;
+    background: #000;
+    color: #000;
 }
 
 .menu-area > ul > li {
@@ -123,8 +127,8 @@ body {
     padding: 0;
 }
 
-.dropdown li{
-    background: #313131;
+.dropdown li {
+    background: #000;
     display: none;
 }
 
@@ -200,7 +204,7 @@ body {
     align-items: center;
     width: 95%;
     overflow: hidden;
-    background-color: #313131;
+    background-color: #6F4E37;
     padding: 5px;
     margin: auto;
 }
@@ -210,11 +214,11 @@ body {
     width: 150px;
     height: 150px;
     margin: 12px;
-    border-style:dashed;
-    border-width:4px;
-    border-color: white;
-    background-color:  #50a0d9;
-    background-size:contain;
+    border-style: dashed;
+    border-width: 4px;
+    border-color: #D27D2D;
+    background-color: #7B3F00;
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -236,8 +240,8 @@ body {
 }
 
 #PokemonImage {
-    width: 75%;
-    height: 75%;
+    width: 55%;
+    height: 55%;
     display: block;
     object-fit: contain;
     overflow: hidden;
@@ -247,8 +251,8 @@ body {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 25%;
-    height: 25%
+    width: 16%;
+    height: 16%
 }
 
 .stack-top {
@@ -257,17 +261,37 @@ body {
 
 .XLDiv {
     position: absolute;
-    top: 0px;
-    left: 5px;
-    font-weight: bold;
-    font-size: 24px;
-    color: antiquewhite;
+    top: 5px;
+    right: 24px;
+    width: 16%;
+    height: 10%
 }
 
 .BestBuddy {
     position: absolute;
-    top: 4px;
+    top: 2px;
+    right: 50px;
+    width: 15%;
+    height: 15%
+}
+
+.BestIVDiv {
+    position: absolute;
+    bottom: 0px;
     margin: auto;
-    width: 17%;
-    height: 17%
+    font-size: 11px;
+}
+
+.countDiv {
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    line-height: 20px;
+    font-weight: bold;
+    color: #FFFDD0;
+}
+
+.IVStyle {
+    font-weight: bold;
+    color: #00FF00;
 }

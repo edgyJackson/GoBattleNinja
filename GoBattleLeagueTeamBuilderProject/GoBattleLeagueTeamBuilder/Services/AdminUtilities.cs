@@ -22,12 +22,12 @@ namespace GoBattleLeagueTeamBuilder.Services
             _SendHttpRequest = SendHttpRequest;
             _repo = repo;
         }
-        public async Task littleLeagueAsync()
+        public async Task LittleLeagueAsync()
         {
             for (int i = 1; i <_pokedex.GetCount(); i++)
             {
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.getBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
                 pokedexEntry.LlatkIv = TheIVPerformance.iVS.atkIV;
                 pokedexEntry.LldefIv = TheIVPerformance.iVS.defIV;
@@ -44,10 +44,10 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task GreatLeagueAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount(); i++)
+            for (int i = 0; i <_pokedex.GetCount(); i++)
             {
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.getBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
                 pokedexEntry.GlatkIv = TheIVPerformance.iVS.atkIV;
                 pokedexEntry.GldefIv = TheIVPerformance.iVS.defIV;
@@ -67,7 +67,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             for (int i = 1; i < _pokedex.GetCount(); i++)
             {
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.getBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
 
                 pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
                 pokedexEntry.GlclassicdefIv = TheIVPerformance.iVS.defIV;
@@ -87,7 +87,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             for (int i = 1; i < _pokedex.GetCount(); i++)
             {
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.getBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
                 pokedexEntry.UlatkIv = TheIVPerformance.iVS.atkIV;
                 pokedexEntry.UldefIv = TheIVPerformance.iVS.defIV;
@@ -107,7 +107,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             for (int i = 1; i < _pokedex.GetCount(); i++)
             {
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.getBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
 
                 pokedexEntry.UlclassicatkIv = TheIVPerformance.iVS.atkIV;
                 pokedexEntry.UlclassicdefIv = TheIVPerformance.iVS.defIV;
@@ -122,11 +122,11 @@ namespace GoBattleLeagueTeamBuilder.Services
             }
         }
 
-        public void generatePokedexSeedFileWithBaseStats()
+        public void GeneratePokedexSeedFileWithBaseStats()
         {
             //get all pokemon base stats from pokmemon go api
             string url = "https://pogoapi.net/api/v1/pokemon_stats.json";
-            string PokemonStatsJsonString = _SendHttpRequest.getJsonFromUrl(url);
+            string PokemonStatsJsonString = _SendHttpRequest.GetJsonFromUrl(url);
             JArray geo = JArray.Parse(PokemonStatsJsonString);
 
             try
@@ -152,7 +152,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             }
         }
 
-        public void generatePokedexSeedFileWithBestIVs()
+        public void GeneratePokedexSeedFileWithBestIVs()
         {
             //get all pokemon from db
           

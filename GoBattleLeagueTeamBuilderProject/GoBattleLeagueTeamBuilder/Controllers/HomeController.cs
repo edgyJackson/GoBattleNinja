@@ -23,9 +23,9 @@ namespace GoBattleLeagueTeamBuilder.Controllers
             _AdminUtilities = AdminUtilities;
         }
 
-        public IActionResult Index()
+        public IActionResult IndexAsync()
         {
-          
+            /*await _AdminUtilities.GreatLeagueAsync();*/
             return View();
         }
 

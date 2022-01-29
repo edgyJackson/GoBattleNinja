@@ -7,6 +7,6 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
 {
     public interface ISendHTTPWebRequest
     {
-        string getJsonFromUrl(string url);
+        string GetJsonFromUrl(string url);
     }
 }
