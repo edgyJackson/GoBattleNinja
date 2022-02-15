@@ -295,3 +295,8 @@ body {
     font-weight: bold;
     color: #00FF00;
 }
+
+.pokemon-search-bar {
+    margin-bottom: 15px;
+}
+
