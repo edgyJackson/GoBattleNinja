@@ -147,7 +147,7 @@ $(document).ready(function()
                 }
                 
                 //dynamically paste the html into the view 
-                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + "</div></a>");
+                $(".MainBox").append("<a href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img id=\"PokemonImage\" src=\"../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + "_shiny.png\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + "</div></a>");
 
                 //increase count
                 count++;
