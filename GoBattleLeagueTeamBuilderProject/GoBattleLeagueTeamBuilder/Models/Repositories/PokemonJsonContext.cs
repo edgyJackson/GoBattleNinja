@@ -2,8 +2,8 @@
 
 namespace GoBattleLeagueTeamBuilder.Models.Repositories
 {
-    [JsonSerializable()]
+   /* [JsonSerializable()]
     public partial class PokemonJsonContext : JsonSerializerContext
     {
-    }
+    }*/
 }

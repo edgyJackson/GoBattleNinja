@@ -7,24 +7,30 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using GoBattleLeagueTeamBuilder.Models;
 using GoBattleLeagueTeamBuilder.Models.Interfaces;
+using System.Net.Http;
 
 namespace GoBattleLeagueTeamBuilder.Controllers
 {
     public class HomeController : Controller
     {
+        
         private readonly ILogger<HomeController> _logger;
         private readonly IPokedexRepository _pokedex;
         private readonly IAdminUtilities _AdminUtilities;
-
-        public HomeController(ILogger<HomeController> logger, IPokedexRepository pokedex, IAdminUtilities AdminUtilities)
+        private readonly IGameMasterRepository _IGameMasterRepository;
+        private readonly IHttpClientFactory _IHttpClientFactory;
+        public HomeController(ILogger<HomeController> logger, IPokedexRepository pokedex, IAdminUtilities AdminUtilities, IGameMasterRepository IGameMasterRepository, IHttpClientFactory IHttpClientFactory)
         {
             _logger = logger;
             _pokedex = pokedex;
             _AdminUtilities = AdminUtilities;
-        }
+            _IGameMasterRepository = IGameMasterRepository;
+            _IHttpClientFactory = IHttpClientFactory;
+    }
 
-        public IActionResult IndexAsync()
+        public async Task<IActionResult> IndexAsync()
         {
+            await _IGameMasterRepository.HTTPClientGetJsonFromUrl(_IHttpClientFactory, "https://raw.githubusercontent.com/PokeMiners/game_masters/master/latest/latest.json");
             /*await _AdminUtilities.GreatLeagueAsync();*/
             return View();
         }
