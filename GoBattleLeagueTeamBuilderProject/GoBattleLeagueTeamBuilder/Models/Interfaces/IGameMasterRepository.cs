@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoBattleLeagueTeamBuilder.Models.Interfaces
 {
-    public interface IGameMasterRepository
-    {
-        void GetGameMasterFileWithNewtonSoft();
-        Task HTTPClientGetJsonFromUrl(IHttpClientFactory iHttpClientFactory, string url);
-    }
+  public interface IGameMasterRepository
+  {
+    Task<PokemonDataLists> GeneratePokemonDataAsync(List<PokemonUtility> theGMF);
+
+    /*    void GetGameMasterFileWithNewtonSoft();*/
+    Task<PokemonDataLists> HTTPClientGetJsonFromUrl(IHttpClientFactory iHttpClientFactory);
+  }
 }

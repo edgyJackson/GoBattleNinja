@@ -202,7 +202,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    width: 95%;
+    width: 100%;
     overflow: hidden;
     background-color: #6F4E37;
     padding: 5px;
@@ -211,8 +211,8 @@ body {
 
 
 .MainBox .MainBoxUL {
-    width: 150px;
-    height: 150px;
+    width: 185px;
+    height: 185px;
     margin: 12px;
     border-style: dashed;
     border-width: 4px;
@@ -239,9 +239,9 @@ body {
     color: white;
 }
 
-#PokemonImage {
-    width: 55%;
-    height: 55%;
+.PokemonImage {
+    width: 45%;
+    height: 45%;
     display: block;
     object-fit: contain;
     overflow: hidden;
@@ -251,8 +251,8 @@ body {
     position: absolute;
     top: 0px;
     right: 0px;
-    width: 16%;
-    height: 16%
+    width: 14%;
+    height: 14%
 }
 
 .stack-top {
@@ -262,17 +262,17 @@ body {
 .XLDiv {
     position: absolute;
     top: 5px;
-    right: 24px;
-    width: 16%;
-    height: 10%
+    right: 29px;
+    width: 15%;
+    height: 9%
 }
 
 .BestBuddy {
     position: absolute;
     top: 2px;
-    right: 50px;
-    width: 15%;
-    height: 15%
+    right: 60px;
+    width: 13%;
+    height: 13%
 }
 
 .BestIVDiv {
@@ -298,5 +298,26 @@ body {
 
 .pokemon-search-bar {
     margin-bottom: 15px;
+}
+
+.MainBox ul {
+    list-style: none;
+    width: auto;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+
+.MainBox ul li {
+    display: inline-block;
+    margin-right: 0px;
+}
+
+.PokemonNameDiv {
+    position: absolute;
+    top: 25px;
+    line-height: 20px;
+    font-weight: bold;
+    color: white;
 }
 

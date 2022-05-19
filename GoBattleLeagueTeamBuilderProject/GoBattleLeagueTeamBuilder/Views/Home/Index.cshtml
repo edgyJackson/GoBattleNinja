@@ -45,10 +45,14 @@
 </div>
 
 <div class="pokemon-search-bar text-center">
-		<input class="poke-search" type="text" placeholder="Search Pokemon"/>
+		<input type="text" id="myInput" onkeyup="SearchFunction()" placeholder="Search for Pokemon..">
 	</div>
 
-<div class="MainBox"></div>
+<div class="MainBox">
+    <ul id="myUL">
+
+    </ul>
+</div>
 
 @section Scripts {
     <script src="/js/MainBox.js"></script>    

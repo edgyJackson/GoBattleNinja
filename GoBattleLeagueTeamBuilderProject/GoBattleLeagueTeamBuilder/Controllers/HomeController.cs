@@ -30,7 +30,7 @@ namespace GoBattleLeagueTeamBuilder.Controllers
 
         public async Task<IActionResult> IndexAsync()
         {
-            await _IGameMasterRepository.HTTPClientGetJsonFromUrl(_IHttpClientFactory, "https://raw.githubusercontent.com/PokeMiners/game_masters/master/latest/latest.json");
+            await _IGameMasterRepository.HTTPClientGetJsonFromUrl(_IHttpClientFactory);
             /*await _AdminUtilities.GreatLeagueAsync();*/
             return View();
         }
