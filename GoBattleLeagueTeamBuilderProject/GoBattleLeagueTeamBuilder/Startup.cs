@@ -52,6 +52,8 @@ namespace GoBattleLeagueTeamBuilder
             services.AddScoped<ISendHTTPWebRequest, SendHTTPWebRequest>();
             services.AddScoped<IRepository<Pokedex>, Repository<Pokedex>>();
             services.AddScoped<IAdminUtilities, AdminUtilities>();
+            services.AddScoped<IGameMasterRepository, GameMasterRepository>();
+            services.AddHttpClient();
 
 
 

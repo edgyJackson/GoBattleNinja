@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>aspnet-GoBattleLeagueTeamBuilder-CD0A7871-0E47-434A-B286-1F2B7769A46B</UserSecretsId>
   </PropertyGroup>
 
