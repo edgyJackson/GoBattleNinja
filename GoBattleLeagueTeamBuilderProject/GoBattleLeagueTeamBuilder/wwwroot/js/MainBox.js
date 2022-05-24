@@ -61,11 +61,13 @@ function SelectLeague() {
                 var ThePokemonsID = "";
                 var displayBestIVs = "";
                 var countDiv = "<div class = 'countDiv'>" + count + "</div>";
-                var PokemonNameDiv = "<div class = 'PokemonNameDiv'>";
+                var PokemonNameDiv = "";
+
+                
 
                 //get the pokemons name string from pvpoke json; set pokemon form and shadowpurifiedxl to default
                 speciesNameString = data[i].speciesName;
-                PokemonNameDiv = PokemonNameDiv + speciesNameString + "</div>"
+                PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>"
                 pokemonForm = "00";
                 shadowOrPurifiedOrXLBuddy = "";
                 displayBestIVs = "";
@@ -91,7 +93,7 @@ function SelectLeague() {
                     var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_standard' && obj.name == pokemonName);
                 } else if (data[i].speciesId.includes('galarian_zen')) {
                     var pokedexMon = pokedex.filter(obj => obj.form == 'Galarian_zen' && obj.name == pokemonName);
-                } else if (match == "" || match[2] == "Shadow" || match[2] == "Jr") {
+                } else if (match == "" || match[2] == "Shadow" || match[2] == "Jr" ) {
                     var pokedexMon = pokedex.filter(obj => obj.name == pokemonName && obj.form == "Normal");
                 } else {
                     var pokedexMon = pokedex.filter(obj => obj.name == pokemonName && obj.form == match[2]);

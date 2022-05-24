@@ -11,6 +11,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
     Task<PokemonDataLists> GeneratePokemonDataAsync(List<PokemonUtility> theGMF);
 
     /*    void GetGameMasterFileWithNewtonSoft();*/
-    Task<PokemonDataLists> HTTPClientGetJsonFromUrl(IHttpClientFactory iHttpClientFactory);
+    Task HTTPClientGetJsonFromUrl(IHttpClientFactory iHttpClientFactory);
+    Task UpdatePokemonData(IHttpClientFactory HttpClientFactory);
   }
 }

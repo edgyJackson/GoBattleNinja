@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -9,9 +6,8 @@ using GoBattleLeagueTeamBuilder.Models;
 using GoBattleLeagueTeamBuilder.Models.Interfaces;
 using System.Net.Http;
 
-namespace GoBattleLeagueTeamBuilder.Controllers
-{
-    public class HomeController : Controller
+namespace GoBattleLeagueTeamBuilder.Controllers {
+	public class HomeController : Controller
     {
         
         private readonly ILogger<HomeController> _logger;
@@ -28,14 +24,14 @@ namespace GoBattleLeagueTeamBuilder.Controllers
             _IHttpClientFactory = IHttpClientFactory;
     }
 
-        public async Task<IActionResult> IndexAsync()
-        {
-            await _IGameMasterRepository.HTTPClientGetJsonFromUrl(_IHttpClientFactory);
-            /*await _AdminUtilities.GreatLeagueAsync();*/
-            return View();
-        }
+		public async Task<IActionResult> IndexAsync() {
+			/*_AdminUtilities.GeneratePokedexSeedFileWithBaseStats();*/
+			await _IGameMasterRepository.UpdatePokemonData(_IHttpClientFactory);
+			/*await _AdminUtilities.GreatLeagueAsync();*/
+			return View();
+			}
 
-        [HttpPost]
+		[HttpPost]
         public IActionResult GetPokedex()
         {        
             return Json(_pokedex.GetAllPokemon());
