@@ -182,6 +182,26 @@ body {
     animation-delay: 750ms;
 }
 
+.menu-area li:hover > .dropdown li:nth-child(8) {
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 900ms;
+}
+
+.menu-area li:hover > .dropdown li:nth-child(9) {
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 1050ms;
+}
+
+.menu-area li:hover > .dropdown li:nth-child(10) {
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 1200ms;
+}
+
+.menu-area li:hover > .dropdown li:nth-child(11) {
+    animation: animate 300ms ease-in-out forwards;
+    animation-delay: 1350ms;
+}
+
 
 @keyframes animate{
     0%{

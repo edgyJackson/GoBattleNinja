@@ -16,11 +16,13 @@ using GoBattleLeagueTeamBuilder.Models;
 using GoBattleLeagueTeamBuilder.Models.Interfaces;
 using GoBattleLeagueTeamBuilder.Models.Repositories;
 using GoBattleLeagueTeamBuilder.Services;
+using Microsoft.Data.SqlClient;
 
 namespace GoBattleLeagueTeamBuilder
 {
     public class Startup
     {
+        private string connectionString = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -31,6 +33,10 @@ namespace GoBattleLeagueTeamBuilder
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //Azure Connection
+           /* var builder = new SqlConnectionStringBuilder(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
+            builder.Password = Configuration["GoBattleLeagueTeamBuilder:DBPassword"];*/
+
             //identity connection
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
@@ -39,12 +45,14 @@ namespace GoBattleLeagueTeamBuilder
             //GoBattleLeagueTeamBuilder connection
             services.AddDbContext<GoBattleLeagueTeamBuilderDBContext>(opts =>
             {
-                //local host connection
-                opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
-                //azure connection
-                //opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
+							//Azure Connection
+							/*opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));*/
+							//local host connection
+							opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
+							//azure connection
+							//opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
 
-            });
+						});
 
             // Add our custom interfaces and repos for fun Dependency Injection
             services.AddScoped<IPokedexRepository, PokedexRepository>();
@@ -89,6 +97,11 @@ namespace GoBattleLeagueTeamBuilder
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                   name: "Get Pokedex",
+                   pattern: "Home/GetPokedex/",
+                   defaults: new { controller = "Home", action = "GetPokedex" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

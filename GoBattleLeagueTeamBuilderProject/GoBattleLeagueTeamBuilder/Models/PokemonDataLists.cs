@@ -14,7 +14,7 @@ namespace GoBattleLeagueTeamBuilder.Models
         public List<Formsettings> ListFormSettings { get; set; } //40614 
         public List<Typeeffective> ListTypeEffective { get; set; } //55807 
         public List<Pokemonfamily> ListPokemonFamily { get; set; } //79513 
-        public List<Pokemonsettings> ListPokemonSettings { get; set; } //79524 
+        public List<PokemonsettingsData> ListPokemonSettings { get; set; } //79524 
         public List<Weatheraffinities> ListWeatherAffinities { get; set; } //233696 
 
     }

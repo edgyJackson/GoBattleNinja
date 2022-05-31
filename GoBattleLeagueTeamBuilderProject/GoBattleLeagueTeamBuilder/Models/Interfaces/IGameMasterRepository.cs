@@ -8,10 +8,6 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
 {
   public interface IGameMasterRepository
   {
-    Task<PokemonDataLists> GeneratePokemonDataAsync(List<PokemonUtility> theGMF);
-
-    /*    void GetGameMasterFileWithNewtonSoft();*/
-    Task HTTPClientGetJsonFromUrl(IHttpClientFactory iHttpClientFactory);
-    Task UpdatePokemonData(IHttpClientFactory HttpClientFactory);
+    Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory);
   }
 }

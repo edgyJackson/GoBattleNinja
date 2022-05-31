@@ -1,4 +1,5 @@
 ﻿using GoBattleLeagueTeamBuilder.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
         public virtual List<Pokedex> GetAllPokemon()
         {
             return _dbSet.OrderBy(x => x.Id).ToList();
+        }
+        public virtual async Task<List<Pokedex>> GetAllPokemonAsync()
+        {
+            return await _dbSet.ToListAsync();
         }
 
         public virtual int GetCount()

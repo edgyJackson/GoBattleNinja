@@ -22,10 +22,22 @@ namespace GoBattleLeagueTeamBuilder.Services
             _SendHttpRequest = SendHttpRequest;
             _repo = repo;
         }
+
+        public async Task GetPVPIVSForAllLeagues() {
+          await LittleLeagueAsync();
+          await GreatLeagueAsync();
+          await GreatLeagueClassicAsync();
+          await UltraLeagueAsync();
+          await UltraLeagueClassicAsync();
+        }
+
         public async Task LittleLeagueAsync()
         {
-            for (int i = 1; i <_pokedex.GetCount(); i++)
+            for (int i = 1; i <_pokedex.GetCount()+1; i++)
             {
+				        if(_pokedex.GetPokedexEntryByID(i).LlcP!=null) {
+                  continue;
+				        }
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
                 var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
@@ -44,8 +56,11 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task GreatLeagueAsync()
         {
-            for (int i = 0; i <_pokedex.GetCount(); i++)
+            for (int i = 1; i <_pokedex.GetCount()+1; i++)
             {
+                if(_pokedex.GetPokedexEntryByID(i).GlcP!=null) {
+                  continue;
+				        }
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
                 var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
@@ -64,8 +79,11 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task GreatLeagueClassicAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount(); i++)
+            for (int i = 1; i < _pokedex.GetCount()+1; i++)
             {
+                if(_pokedex.GetPokedexEntryByID(i).GlclassiccP!=null) {
+                  continue;
+				        }
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
                 var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
 
@@ -84,8 +102,11 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task UltraLeagueAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount(); i++)
+            for (int i = 1; i < _pokedex.GetCount()+1; i++)
             {
+                if(_pokedex.GetPokedexEntryByID(i).UlcP!=null) {
+                  continue;
+				        }
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
                 var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
 
@@ -104,8 +125,11 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task UltraLeagueClassicAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount(); i++)
+            for (int i = 1; i < _pokedex.GetCount()+1; i++)
             {
+                if(_pokedex.GetPokedexEntryByID(i).UlclassiccP!=null) {
+                  continue;
+				        }
                 var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
                 var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
 

@@ -7,6 +7,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
 {
     public interface IAdminUtilities
     {
+        Task GetPVPIVSForAllLeagues();
         Task LittleLeagueAsync();
         Task GreatLeagueAsync();
         Task GreatLeagueClassicAsync();

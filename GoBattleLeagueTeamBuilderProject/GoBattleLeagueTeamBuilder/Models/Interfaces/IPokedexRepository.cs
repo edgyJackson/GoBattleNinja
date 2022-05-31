@@ -9,6 +9,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
     {
         List<string> GetAllPokemonNames();
         List<Pokedex> GetAllPokemon();
+        Task<List<Pokedex>> GetAllPokemonAsync();
         int GetCount();
         Pokedex GetPokedexEntryByID(int Id);
 
