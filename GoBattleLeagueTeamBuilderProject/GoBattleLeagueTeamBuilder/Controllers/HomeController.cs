@@ -62,7 +62,7 @@ namespace GoBattleLeagueTeamBuilder.Controllers {
       }
 			return View();
 		}
-    [HttpPost]
+
       public  IActionResult GetPokedex()
       {
         //get pokemon data

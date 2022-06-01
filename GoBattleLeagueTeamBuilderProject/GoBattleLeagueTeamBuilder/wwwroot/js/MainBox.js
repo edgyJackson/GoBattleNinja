@@ -6,28 +6,28 @@ var dict = {"Go Battle League ML":"10000","CliffHanger ML":"10000","Championship
 var WeirdNameList = ["HAKAMO_O", "HO_OH", "JANGMO_O", "KOMMO_O", "PORYGON_Z", "MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL","NIDORAN_MALE","NIDORAN_FEMALE"];
 var NoHyphenList = ["MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL"];
 /*var TypeColors = {""};*/
-//async causing json not to load properly: set to false
+//async causing json not to load properly: set to false for debugging
 /*var pokedex =$.ajax({
     type: "GET",
     url: "/Home/GetPokedex",
     async: true,
     dataType: 'json',
-}).responseJSON;*/
+}).responseJSON;
+
+$(document).ready(function () {
+    SelectLeague();
+});*/
 
 $(document).ready(function () {
     $.ajax({
         type: "POST",
         dataType: "json",
-        async: true,
-        url: "Home/GetPokedex",
+        async: false,
+        url: "Home/GetPokedex/",
         success: SelectLeague,
         error: errorOnAjax
     });
 });
-
-/*$(document).ready(function () {
-    SelectLeague();
-});*/
 
 function errorOnAjax() {
     console.log("ERROR in ajax request");
@@ -94,7 +94,7 @@ function SelectLeague(pokedex) {
                     speciesID=speciesID.replace("_SHADOW", "");
                 }
 //----------------Parse out form from speciesId string----------------------------------------------------------------------------------------------------
-                if (speciesID.includes("NIDOQUEEN")) {
+                if (speciesID.includes("FLOETTE")) {
                     console.log("hey");
                 }
                 if (speciesID.includes("_")) {
@@ -241,12 +241,12 @@ function SelectLeague(pokedex) {
                         case "Mega ML":
                             //add XL and best buddy in Master league
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>" + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
-                            /*displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulclassiccP + " LV: " + pokedexMon[0].ulclassiclevel + " " + pokedexMon[0].ulclassicatkIv + " " + pokedexMon[0].ulclassicdefIv + " " + pokedexMon[0].ulclassicstaIv + "</div>";*/
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAXED" + " LV: " + 51 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
                             break;
                         case "Master League Classic":
                         case "Master League Premier Classic":
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
-                            /*displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulclassiccP + " LV: " + pokedexMon[0].ulclassiclevel + " " + pokedexMon[0].ulclassicatkIv + " " + pokedexMon[0].ulclassicdefIv + " " + pokedexMon[0].ulclassicstaIv + "</div>";*/
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAXED" + " LV: " + 41 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
                             break;
                         /*default:
                             alert('Default case');*/
