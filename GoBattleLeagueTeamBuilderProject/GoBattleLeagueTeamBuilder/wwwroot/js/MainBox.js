@@ -87,11 +87,16 @@ function SelectLeague(pokedex) {
                 speciesID = data[i].speciesId.toUpperCase();
                 if (speciesID.endsWith("_XS")) {
                     speciesID = speciesID.replace("_XS", "");
+                    LeagueSelected = "Great League Premier Classic";
                 }
                 //Check if shadow and fill shadowOrPurifiedOrXLBuddy if so, then remove the shadow from the speciesId
                 if (speciesID.endsWith("_SHADOW")) {
                     shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     speciesID=speciesID.replace("_SHADOW", "");
+                }
+                //check for purified
+                if (data[i].moveset.includes("RETURN")) {
+                  shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
 //----------------Parse out form from speciesId string----------------------------------------------------------------------------------------------------
                 if (speciesID.includes("FLOETTE")) {
@@ -173,7 +178,6 @@ function SelectLeague(pokedex) {
                         case "CliffHanger LL":
                         case "Championship Series LL":
                         case "Mega LL":
-
                             //check for XL and best buddy in little league
                             if (pokedexMon[0].lllevel > 41) {
                                 shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>";
