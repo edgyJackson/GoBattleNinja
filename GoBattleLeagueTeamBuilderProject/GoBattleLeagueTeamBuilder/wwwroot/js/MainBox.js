@@ -159,6 +159,9 @@ function SelectLeague(pokedex) {
                 pokemonForm2 = "POMPOM";
                 }*/
                 speciesNameString = data[i].speciesName;
+                if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                    speciesNameString = speciesNameString + "(Purified)";
+                }
                 PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
                 //get the pokemon from the pokedex
                 if (isWeirdName) {
@@ -178,13 +181,20 @@ function SelectLeague(pokedex) {
                         case "CliffHanger LL":
                         case "Championship Series LL":
                         case "Mega LL":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].llatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].llatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
                             //check for XL and best buddy in little league
                             if (pokedexMon[0].lllevel > 41) {
                                 shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>";
                                 if (pokedexMon[0].lllevel == 51 || pokedexMon[0].lllevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                             }
                             //Get Ivs and add them to the html string to be displayed
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].llcP + " LV: " + pokedexMon[0].lllevel + " <span class='IVStyle'>" + pokedexMon[0].llatkIv + "/" + pokedexMon[0].lldefIv + "/" + pokedexMon[0].llstaIv + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].llcP + " LV: " + pokedexMon[0].lllevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].lldefIv + "/" + pokedexMon[0].llstaIv + "</span></div>";
                             break;
                         case "Great League":
                         case "Great League Remix":
@@ -202,19 +212,33 @@ function SelectLeague(pokedex) {
                         case "Championship Series GL":
                         case "Alchemy Cup":
                         case "Mega GL":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].glatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].glatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
                             //check for XL and best buddy in great league
                             if (pokedexMon[0].gllevel > 41) {
                                 shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>";
                                 if (pokedexMon[0].gllevel == 51 || pokedexMon[0].gllevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                             }
                             //Get Ivs and add them to the html string to be displayed
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glcP + " LV: " + pokedexMon[0].gllevel + " <span class='IVStyle'>" + pokedexMon[0].glatkIv + "/" + pokedexMon[0].gldefIv + "/" + pokedexMon[0].glstaIv + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glcP + " LV: " + pokedexMon[0].gllevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].gldefIv + "/" + pokedexMon[0].glstaIv + "</span></div>";
                             break;
                         case "Great League Premier Classic":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].glclassicatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].glclassicatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
                             //check for best buddy in great league classic
                             if (pokedexMon[0].glclassiclevel == 41 || pokedexMon[0].glclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                             //Get Ivs and add them to the html string to be displayed
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glclassiccP + " LV: " + pokedexMon[0].glclassiclevel + " <span class='IVStyle'>" + pokedexMon[0].glclassicatkIv + "/" + pokedexMon[0].glclassicdefIv + "/" + pokedexMon[0].glclassicstaIv + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glclassiccP + " LV: " + pokedexMon[0].glclassiclevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].glclassicdefIv + "/" + pokedexMon[0].glclassicstaIv + "</span></div>";
                             break;
                         case "Ultra League":
                         case "Ultra League Remix":
@@ -223,19 +247,33 @@ function SelectLeague(pokedex) {
                         case "CliffHanger UL":
                         case "Championship Series UL":
                         case "Mega UL":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].ulatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].ulatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
                             //check for XL and best buddy  inultra league
                             if (pokedexMon[0].ullevel > 41) {
                                 shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>";
                                 if (pokedexMon[0].ullevel == 51 || pokedexMon[0].ullevel == 50.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                             }
                             //Get Ivs and add them to the html string to be displayed
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulcP + " LV: " + pokedexMon[0].ullevel + " <span class='IVStyle'>" + pokedexMon[0].ulatkIv + "/" + pokedexMon[0].uldefIv + "/" + pokedexMon[0].ulstaIv + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulcP + " LV: " + pokedexMon[0].ullevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].uldefIv + "/" + pokedexMon[0].ulstaIv + "</span></div>";
                             break;
                         case "Ultra League Premier Classic":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].ulclassicatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].ulclassicatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
                             //check for best buddy in ultra league
                             if (pokedexMon[0].ulclassiclevel == 41 || pokedexMon[0].ulclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
                             //Get Ivs and add them to the html string to be displayed
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulclassiccP + " LV: " + pokedexMon[0].ulclassiclevel + " <span class='IVStyle'>" + pokedexMon[0].ulclassicatkIv + "/" + pokedexMon[0].ulclassicdefIv + "/" + pokedexMon[0].ulclassicstaIv + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulclassiccP + " LV: " + pokedexMon[0].ulclassiclevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].ulclassicdefIv + "/" + pokedexMon[0].ulclassicstaIv + "</span></div>";
                             break;
                         case "Master League":
                         case "Master League Premier":
