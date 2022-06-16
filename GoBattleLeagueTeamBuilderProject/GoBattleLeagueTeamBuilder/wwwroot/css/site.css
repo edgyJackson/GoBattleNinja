@@ -341,3 +341,17 @@ body {
     color: white;
 }
 
+.shinyBtn {
+    color: #fff;
+    position: relative;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0 40px;
+    padding: 15px 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    font-size: 23px;
+    background: #FFD700;
+    /*background: linear-gradient(to right,#FFD700,d4af37);*/
+}
