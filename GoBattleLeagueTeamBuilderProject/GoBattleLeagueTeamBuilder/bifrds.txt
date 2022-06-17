@@ -12,3 +12,4 @@ electric --> flying
 psychic--> fighting
 dark --> psychic, ghost
 fairy --> dragon, fighting, dark
+go sensei
