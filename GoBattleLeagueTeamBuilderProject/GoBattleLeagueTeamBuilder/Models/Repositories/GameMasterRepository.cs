@@ -50,7 +50,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
             continue;
           }
           await _goBattleLeagueTeamBuilderDBContext.Pokedexes.AddAsync(listPokedexes[i]);
-          sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta );
+          sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta + " Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
         }
       }
       await _AdminUtilities.GetPVPIVSForAllLeagues();
@@ -100,12 +100,12 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
       if(!File.Exists("GameMasterFileUpdateLogs.txt")) 
       {
         StreamWriter sw = new("GameMasterFileUpdateLogs.txt");
-        sw.Write("Game Master File Log Created " + DateTime.Now);
+        sw.Write("Game Master File Log Created " + DateTime.Now + " ============================================");
         sw.Close();
 			}
 			else if(gameMasterFileWasUpdated){
         StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
-        sw.Write("\r\nGame Master File Updated " + DateTime.Now);
+        sw.Write("\r\nGame Master File Updated " + DateTime.Now + " --------------------------------------------");
         sw.Close();
 			}
       return gameMasterFileWasUpdated;

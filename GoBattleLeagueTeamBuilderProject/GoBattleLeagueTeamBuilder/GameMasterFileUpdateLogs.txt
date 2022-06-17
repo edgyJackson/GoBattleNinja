@@ -1,1 +1,4 @@
-Game Master File Log Created 6/16/2022 9:02:07 PM
+Game Master File Log Created 6/16/2022 9:45:10 PM ============================================
+
+Game Master File Updated 6/16/2022 9:46:32 PM --------------------------------------------
+898 - CALYREX SHADOW_RIDER 324 194 205 Img Path: pokemon_icon_898_00_shiny.png
