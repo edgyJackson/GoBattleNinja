@@ -288,12 +288,12 @@ function SelectLeague(pokedex) {
                         case "Mega ML":
                             //add XL and best buddy in Master league
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>" + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAXED" + " LV: " + 51 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAX" + " LV: " + 51 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
                             break;
                         case "Master League Classic":
                         case "Master League Premier Classic":
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
-                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAXED" + " LV: " + 41 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + "MAX" + " LV: " + 41 + " <span class='IVStyle'>" + 15 + "/" + 15 + "/" + 15 + "</span></div>";
                             break;
                         /*default:
                             alert('Default case');*/

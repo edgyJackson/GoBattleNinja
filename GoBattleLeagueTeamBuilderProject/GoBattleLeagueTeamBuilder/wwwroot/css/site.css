@@ -231,8 +231,8 @@ body {
 
 
 .MainBox .MainBoxUL {
-    width: 185px;
-    height: 185px;
+    width: 200px;
+    height: 200px;
     margin: 12px;
     border-style: dashed;
     border-width: 4px;
@@ -299,7 +299,7 @@ body {
     position: absolute;
     bottom: 0px;
     margin: auto;
-    font-size: 11px;
+    font-size: 16px;
 }
 
 .countDiv {
@@ -339,6 +339,7 @@ body {
     line-height: 20px;
     font-weight: bold;
     color: white;
+    font-size: 20px;
 }
 
 .shinyBtn {
