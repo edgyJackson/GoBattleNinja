@@ -68,7 +68,7 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 - <a href="https://github.com/edgyJackson">Reggie Johnson</a>  
 
 # Access
-<a href="https://github.com/edgyJackson/GoBattleNinja">Website Link</a> - Also Deployed Upon Request!
+<a href="https://gobattleninja.azurewebsites.net/#">Website Link</a> - Also Deployed Upon Request!
 
 # Team Rules
 - Be Kind
