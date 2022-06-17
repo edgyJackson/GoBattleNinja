@@ -85,6 +85,10 @@ function SelectLeague(pokedex) {
 
                 //get the speciesId from pvpoke json and set it to uppercase; 
                 speciesID = data[i].speciesId.toUpperCase();
+                //check if speciesID could not be retireved
+                if (speciesID == null || speciesID == "") {
+                    console.log("Species Id was not found " + data[i].speciesId);
+                }
                 if (speciesID.endsWith("_XS")) {
                     speciesID = speciesID.replace("_XS", "");
                     LeagueSelected = "Great League Premier Classic";

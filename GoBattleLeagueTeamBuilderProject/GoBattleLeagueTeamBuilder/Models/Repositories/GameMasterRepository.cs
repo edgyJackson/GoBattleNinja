@@ -11,23 +11,57 @@ using System.IO;
 
 namespace GoBattleLeagueTeamBuilder.Models.Repositories {
   public class GameMasterRepository:IGameMasterRepository {
-    private readonly ISendHTTPWebRequest ISendHTTPWebRequest_;
-    public GameMasterRepository(ISendHTTPWebRequest ISendHTTPWebRequest,IAdminUtilities AdminUtilities,IHttpClientFactory IHttpClientFactory) {
-      ISendHTTPWebRequest_=ISendHTTPWebRequest;
+    private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
+    private readonly IAdminUtilities _AdminUtilities;
+     
+    public GameMasterRepository(GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext,IAdminUtilities AdminUtilities) {
+      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
+      _AdminUtilities = AdminUtilities;
     }
     /*public void GetGameMasterFileWithNewtonSoft()
     {
         var gameMasterFileJsonString = ISendHTTPWebRequest_.GetJsonFromUrl("https://raw.githubusercontent.com/PokeMiners/game_masters/master/latest/latest.json");
-
-        JArray geo = JArray.Parse(gameMasterFileJsonString);
-            
+        JArray geo = JArray.Parse(gameMasterFileJsonString); 
     }*/
-
-    public async Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory) {
-      return await HTTPClientGetJsonFromUrl(HttpClientFactory);
+    public async Task UpdateThePokedexAsync(IHttpClientFactory _IHttpClientFactory)
+    {
+      PokemonDataLists pokemonDataLists=new();
+      if(!await UpdatePokemonData(_IHttpClientFactory)) { 
+        return; 
+      }
+      using var fs=new FileStream(@"./Data/pokemonDataListsJson.json",FileMode.Open,FileAccess.Read);
+      pokemonDataLists=await JsonSerializer.DeserializeAsync<PokemonDataLists>(fs,new JsonSerializerOptions { PropertyNameCaseInsensitive=true });
+      List<Pokedex>listPokedexes=new();
+      for(int i = 0;i<pokemonDataLists.ListPokemonSettings.Count;i++) {
+        listPokedexes.Add(new Pokedex {
+          PokemonId=int.Parse(pokemonDataLists.ListPokemonSettings[i].templateId.Substring(1,4)),
+          Name=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.pokemonId,
+          Form=(pokemonDataLists.ListPokemonSettings[i].pokemonSettings.form!=null) ? pokemonDataLists.ListPokemonSettings[i].pokemonSettings.form.Replace(pokemonDataLists.ListPokemonSettings[i].pokemonSettings.pokemonId+"_","") : "NO_FORM",
+          BaseAtk=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseAttack,
+          BaseDef=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseDefense,
+          BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseStamina
+        });
+      }
+      //Add new pokemon to pokedex and update log files
+      using(StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt")) {
+        //Update the pokedex
+        for(int i = 0;i<listPokedexes.Count;i++) {
+          if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
+            continue;
+          }
+          await _goBattleLeagueTeamBuilderDBContext.Pokedexes.AddAsync(listPokedexes[i]);
+          sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta );
+        }
+      }
+      await _AdminUtilities.GetPVPIVSForAllLeagues();
+      /*await _AdminUtilities.GreatLeagueAsync();*/
     }
 
-    public async Task<bool> HTTPClientGetJsonFromUrl(IHttpClientFactory HttpClientFactory) {
+    public async Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory) {
+      return await HTTPClientGetJsonFromUrlAsync(HttpClientFactory);
+    }
+
+    public async Task<bool> HTTPClientGetJsonFromUrlAsync(IHttpClientFactory HttpClientFactory) {
       bool gameMasterFileWasUpdated=false;
       string text = "";
       string gameFileTimeStamp;
@@ -55,16 +89,24 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
         text=File.ReadAllText("timestamp.txt");
       }
       //check if the current timestamp is older than the new timestamp.
-		  if(long.Parse(gameFileTimeStamp)>long.Parse(text)) {
+		  if(!File.Exists(@"./Data/gameMasterFile.json") || long.Parse(gameFileTimeStamp)>long.Parse(text)) {
         StreamWriter sw = new("timestamp.txt");
         sw.Write(gameFileTimeStamp);
         sw.Close();
         await getGameMasterFile(client);
         gameMasterFileWasUpdated = true;
       }
-			if(!File.Exists(@"./Data/gameMasterFile.json")) {
-        await getGameMasterFile(client);
-        gameMasterFileWasUpdated = true;
+      //log any updates to the game master file
+      if(!File.Exists("GameMasterFileUpdateLogs.txt")) 
+      {
+        StreamWriter sw = new("GameMasterFileUpdateLogs.txt");
+        sw.Write("Game Master File Log Created " + DateTime.Now);
+        sw.Close();
+			}
+			else if(gameMasterFileWasUpdated){
+        StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
+        sw.Write("\r\nGame Master File Updated " + DateTime.Now);
+        sw.Close();
 			}
       return gameMasterFileWasUpdated;
     }

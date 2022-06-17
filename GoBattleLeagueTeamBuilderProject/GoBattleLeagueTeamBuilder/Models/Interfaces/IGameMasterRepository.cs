@@ -9,5 +9,6 @@ namespace GoBattleLeagueTeamBuilder.Models.Interfaces
   public interface IGameMasterRepository
   {
     Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory);
+    Task UpdateThePokedexAsync(IHttpClientFactory _IHttpClientFactory);
   }
 }
