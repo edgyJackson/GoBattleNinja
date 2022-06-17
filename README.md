@@ -22,8 +22,8 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 
 ### Technical Resources:
 - <a href="https://github.com/pvpoke/pvpoke">PVPoke</a> - json endpoints for league rankings
-- <a href="https://pokeapi.co/">PokeAPI</a> - for current pokemon go data
-- <a href="https://github.com/PokeMiners">PokeMiners</a> - for pokemon go assets and the most recent gamemaster json
+- <a href="https://pokeapi.co/">PokeAPI</a> - current pokemon go data
+- <a href="https://github.com/PokeMiners">PokeMiners</a> - pokemon go assets and the most recent gamemaster json
 - Pokemon Stat product algorythm
 
 # Contributing
