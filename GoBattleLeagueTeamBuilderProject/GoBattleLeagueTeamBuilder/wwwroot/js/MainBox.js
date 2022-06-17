@@ -86,9 +86,9 @@ function SelectLeague(pokedex) {
                 //get the speciesId from pvpoke json and set it to uppercase; 
                 speciesID = data[i].speciesId.toUpperCase();
                 //check if speciesID could not be retireved
-                if (speciesID == null || speciesID == "") {
+                /*if (speciesID == null || speciesID == "") {
                     console.log("Species Id was not found " + data[i].speciesId);
-                }
+                }*/
                 if (speciesID.endsWith("_XS")) {
                     speciesID = speciesID.replace("_XS", "");
                     LeagueSelected = "Great League Premier Classic";
@@ -103,9 +103,9 @@ function SelectLeague(pokedex) {
                   shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
 //----------------Parse out form from speciesId string----------------------------------------------------------------------------------------------------
-                if (speciesID.includes("FLOETTE")) {
+                /*if (speciesID.includes("FLOETTE")) {
                     console.log("hey");
-                }
+                }*/
                 if (speciesID.includes("_")) {
                     var myArray = speciesID.split("_");
                     if (WeirdNameList.includes(myArray[0]+"_"+myArray[1])) {
