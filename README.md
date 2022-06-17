@@ -1,5 +1,5 @@
 # Go Battle Ninja
-Pokemon Go team builder, training and simulation tool for players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP) winners, and battle simulations. Let this program generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
+Pokemon Go team builder, training and simulation tool for players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP), and battle simulations. This program will soon be able to generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
 
 # Table of Contents
@@ -18,9 +18,9 @@ Pokemon Go team builder, training and simulation tool for players who need acces
 - [License](#license)
 
 # Background
-Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player. I wanted to know whether I needed my Scrafty for ultra league to be XL'd or "Best Buddies". The process to get the answer to this question was complicated so I decided to create an information and training hub that provides easy access to pokemon data, trends and knowledge that otherwise may be rather,... complicated to find. 
+Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to understand as a beginner or casual pokemon go player. I wanted to know whether I needed my Scrafty for ultra league to be XL'd or "Best Buddies". The process to get the answer to this question was complicated so I decided to create an information and training hub that provides easy access to pokemon data, trends and knowledge that otherwise may be rather... difficult to find. 
 
-### Techonlogies used:
+### Technical Resources:
 - https://github.com/pvpoke/pvpoke (PVPOKE) json endpoints for league rankings
 - https://pokeapi.co/ for current pokemon go data
 - https://github.com/PokeMiners (PokeMiners) for pokemon go assets and the most recent gamemaster json
@@ -56,7 +56,7 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 - Constraints will be sperated by a '_' - "Pokemon_FK_Matchups"
 
 ## GIT
-- Use separate feature branches.
+- Use separate feature branches and send a pull request to dev branch.
 - Only commit working code (Unless others require your code to help fix a bug) and commit often.
 - Write meaningful commit messages.
 - Pull the upstream development code and merge it into your feature branch before submitting a Pull Request.
@@ -68,7 +68,7 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 - <a href="https://github.com/edgyJackson">Reggie Johnson</a>  
 
 # Access
-<a href="#">Website Link</a> - Deployed Upon Request!
+<a href="https://github.com/edgyJackson/GoBattleNinja">Website Link</a> - Also Deployed Upon Request!
 
 # Team Rules
 - Be Kind
@@ -77,7 +77,7 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 # Tools
 - Microsoft Azure
 - Identity Framework
-- Core 5
+- .NET 6
 - SQL Server
 - C#, HTML, Javascript, CSS
 - Continuous Deployment  
