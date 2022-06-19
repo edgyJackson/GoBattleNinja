@@ -65,11 +65,9 @@ function SelectLeague(pokedex) {
         //for shiny button
         var shiny = "";
         $.getJSON(jsonString, function (data) {
-
-            $(".MainBox ul").empty();
-
-            var count = 1;
             console.log("This list is " + data.length + " long!");
+            $(".MainBox ul").empty();
+            var count = 1;
             for (i = 0; i < data.length; i++) {
                 var speciesID = "";
                 var speciesNameString = "";
@@ -110,7 +108,7 @@ function SelectLeague(pokedex) {
                 //get the pokemon name that will be displayed in the html mainbox div and check for purified
                 speciesNameString = data[i].speciesName;
                 if (data[i].moveset.includes("RETURN")) {
-                    speciesNameString = speciesNameString + "(Purified)";
+                    speciesNameString = speciesNameString + " (Purified)";
                     shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
                 //get the pokemon moves that will be displayed in the html mainbox div
@@ -213,7 +211,14 @@ function SelectLeague(pokedex) {
                     console.log("1");
                 }*/
                 //get the pokemon from the pokemonDataLists
-                var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                if (pokemonName.includes("NIDORAN")) {
+                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                } else {
+                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                }
+                if (pokemonDataListMon==null) {
+                    console.log("pokemon undefined");
+                }
                 //Get the pokemon type and add to the div to display the types
                 if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
                     PokemonType1 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[0].typeOverride1;
