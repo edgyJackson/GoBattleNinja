@@ -214,7 +214,7 @@ function SelectLeague(pokedex) {
                     PokemonTypeDiv2 = "<img src=\"../images/Pokemon/Types/" + PokemonType2 + "_BORDERED.png\" class=\"PokemonTypeDiv2\"/>";
                 }
                 /*PokemonTypeDiv = "<img src=\"../images/Pokemon/Types/" + PokemonType + "_BORDERED.png\" class=\"PokemonTypeDiv\"/>";*/
-                if(pokedexMon.length == 1) {
+                if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
                     //get the pokemons id for the mainbox string concatenation
                     ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
                     pokemonForm = pokemonForms[pokemonForm];

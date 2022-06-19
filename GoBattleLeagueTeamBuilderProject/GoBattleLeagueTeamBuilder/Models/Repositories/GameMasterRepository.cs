@@ -44,20 +44,19 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseStamina
         });
       }
-      //Add new pokemon to pokedex and update log files
-      using(StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt")) {
-        //Update the pokedex
-        for(int i = 0;i<listPokedexes.Count;i++) {
-          if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
-            continue;
-          }
-          await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
-          sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta + " Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
-        }
-      }
-      /*await _AdminUtilities.GetPVPIVSForAllLeagues();*/
-      /*await _AdminUtilities.GreatLeagueAsync();*/
-    }
+			//Add new pokemon to pokedex and update log files
+			using StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
+			//Update the pokedex
+			for(int i = 0;i<listPokedexes.Count;i++) {
+				if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
+					continue;
+				}
+				await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
+				sw.WriteLine("\r\n"+listPokedexes[i].PokemonId+" - "+listPokedexes[i].Name+" "+listPokedexes[i].Form+" "+listPokedexes[i].BaseAtk+" "+listPokedexes[i].BaseDef+" "+listPokedexes[i].BaseSta+" Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
+			}
+			/*await _AdminUtilities.GetPVPIVSForAllLeagues();*/
+			/*await _AdminUtilities.GreatLeagueAsync();*/
+		}
 
     public async Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory) {
       return await HTTPClientGetJsonFromUrlAsync(HttpClientFactory);
@@ -125,10 +124,6 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           StreamWriter sw = new(@"./Data/pokemonDataListsJson.json");
           sw.WriteLine(pokemonDataListsJsonString);
           sw.Close(); 
-          //Pass the filepath and filename to the StreamWriter Constructor
-          sw = new(@"./Data/gameMasterFile.json");
-          sw.WriteLine(gameMasterFile);
-          sw.Close();
         }
       }
     }
