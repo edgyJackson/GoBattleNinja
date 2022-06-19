@@ -87,9 +87,26 @@ function SelectLeague(pokedex) {
                 var PokemonTypeDiv2 = "";
                 var PokemonType1 = "";
                 var PokemonType2 = "";
-                var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + data[i].moveset[0].replaceAll("_"," ") + "</div>";
-                var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + data[i].moveset[1].replaceAll("_", " ") + "</div>";
-                var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + data[i].moveset[2].replaceAll("_", " ") + "</div>";
+                var move1 = data[i].moveset[0];
+                var move2 = data[i].moveset[1];
+                var move3 = data[i].moveset[2];
+                if (move1.includes("_")) {
+                    move1 = data[i].moveset[0].replaceAll("_", " ")
+                }
+                if (move2.includes("_")) {
+                    move2 = data[i].moveset[1].replaceAll("_", " ")
+                }
+                if (move3 == null) {
+                    console.log("no 3rd move")
+                }
+                if (move3!=null) {
+                    if (move3.includes("_")) {
+                        move3 = data[i].moveset[2].replaceAll("_", " ")
+                    }
+                }
+                var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + move1 + "</div>";
+                var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + move2 + "</div>";
+                var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
                 //get the pokemon name that will be displayed in the html mainbox div and check for purified
                 speciesNameString = data[i].speciesName;
                 if (data[i].moveset.includes("RETURN")) {
@@ -111,7 +128,7 @@ function SelectLeague(pokedex) {
                     if (!(LeagueSelected.includes("LL") || (LeagueSelected.includes("Little")))) {
                         LeagueSelected = "Great League Premier Classic";
                     }
-                    console.log(data.speciesId);
+                    console.log(data[i].speciesId);
                 }
                 //Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the speciesId
                 if (speciesID.endsWith("_SHADOW")) {
