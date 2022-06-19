@@ -11,12 +11,14 @@ using System.IO;
 
 namespace GoBattleLeagueTeamBuilder.Models.Repositories {
   public class GameMasterRepository:IGameMasterRepository {
-    private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
+    private readonly IRepository<Pokedex> _iRepository;
     private readonly IAdminUtilities _AdminUtilities;
+    private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
      
-    public GameMasterRepository(GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext,IAdminUtilities AdminUtilities) {
-      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
+    public GameMasterRepository(IRepository<Pokedex> iRepository,IAdminUtilities AdminUtilities,GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext) {
+      _iRepository = iRepository;
       _AdminUtilities = AdminUtilities;
+      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
     }
     /*public void GetGameMasterFileWithNewtonSoft()
     {
@@ -49,11 +51,11 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
             continue;
           }
-          await _goBattleLeagueTeamBuilderDBContext.Pokedexes.AddAsync(listPokedexes[i]);
+          await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
           sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta + " Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
         }
       }
-      await _AdminUtilities.GetPVPIVSForAllLeagues();
+      /*await _AdminUtilities.GetPVPIVSForAllLeagues();*/
       /*await _AdminUtilities.GreatLeagueAsync();*/
     }
 
