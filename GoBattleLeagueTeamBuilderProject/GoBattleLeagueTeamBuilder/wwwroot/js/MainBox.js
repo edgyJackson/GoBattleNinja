@@ -187,7 +187,7 @@ function SelectLeague(pokedex) {
                     isWeirdName = true;
                     pokemonForm2 = "POMPOM";
                 }
-                //get the pokemon from the pokedex
+                //get the pokemon from the pokedex=================================
                 if (isWeirdName) {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
                 } else {
@@ -204,7 +204,7 @@ function SelectLeague(pokedex) {
                 /*if (count==113) { // for debugging
                     console.log("1");
                 }*/
-                //get the pokemon from the pokemonDataLists
+                //get the pokemon from the pokemonDataLists=================================
                 if (pokemonName.includes("NIDORAN")) {
                     var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
                 } else {
@@ -215,9 +215,14 @@ function SelectLeague(pokedex) {
                 }
                 //Get the pokemon type and add to the div to display the types
                 if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
-                    PokemonType1 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[0].typeOverride1;
-                    if (pokemonDataListMon.pokemonSettings.tempEvoOverrides[0].typeOverride2!=null) {
-                        PokemonType2 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[0].typeOverride2;
+                    var pokmeonMegaVersionNumber = 0;
+                    //Add check for extra mega forms here, mewtwo and charizard are the only ones so far, just add an or "||" to the if statement
+                    if (pokemonForm.includes("MEGA_Y")) {
+                        pokmeonMegaVersionNumber = 1;
+                    }
+                    PokemonType1 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride1;
+                    if (pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride2!=null) {
+                        PokemonType2 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride2;
                     }
                 } else {
                     PokemonType1 = pokemonDataListMon.pokemonSettings.type;
