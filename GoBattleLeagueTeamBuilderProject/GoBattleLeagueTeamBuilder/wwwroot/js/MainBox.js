@@ -111,12 +111,6 @@ function SelectLeague(pokedex) {
                     speciesNameString = speciesNameString + " (Purified)";
                     shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
-                //get the pokemon moves that will be displayed in the html mainbox div
-                speciesNameString = data[i].speciesName;
-                if (data[i].moveset.includes("RETURN")) {
-                    speciesNameString = speciesNameString + "(Purified)";
-                    shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
-                }
                 PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
                 //get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
                 //also set _XS status
