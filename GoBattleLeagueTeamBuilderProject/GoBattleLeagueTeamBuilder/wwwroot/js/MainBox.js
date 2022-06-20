@@ -88,14 +88,12 @@ function SelectLeague(pokedex) {
                 var move1 = data[i].moveset[0];
                 var move2 = data[i].moveset[1];
                 var move3 = data[i].moveset[2];
+				//1: Get the pokemon moves and format them =============================================================
                 if (move1.includes("_")) {
                     move1 = data[i].moveset[0].replaceAll("_", " ")
                 }
                 if (move2.includes("_")) {
                     move2 = data[i].moveset[1].replaceAll("_", " ")
-                }
-                if (move3 == null) {
-                    console.log("no 3rd move")
                 }
                 if (move3!=null) {
                     if (move3.includes("_")) {
@@ -105,15 +103,15 @@ function SelectLeague(pokedex) {
                 var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + move1 + "</div>";
                 var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + move2 + "</div>";
                 var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
-                //get the pokemon name that will be displayed in the html mainbox div and check for purified
+                //2: get the pokemon name that will be displayed in the html mainbox div and check for purified =========
                 speciesNameString = data[i].speciesName;
                 if (data[i].moveset.includes("RETURN")) {
                     speciesNameString = speciesNameString + " (Purified)";
                     shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
                 PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
-                //get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
-                //also set _XS status
+                //3: get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
+                //also set _XS status  =======================================================================
                 speciesID = data[i].speciesId.toUpperCase();
                 if (speciesID.endsWith("_XS")) {
                     speciesID = speciesID.replace("_XS", "");
@@ -122,15 +120,13 @@ function SelectLeague(pokedex) {
                     }
                     console.log(data[i].speciesId);
                 }
-                //Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the speciesId
+                //4: Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the 
+				//speciesId  ======================================================================================
                 if (speciesID.endsWith("_SHADOW")) {
                     shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     speciesID=speciesID.replace("_SHADOW", "");
                 }
-//----------------Parse out form from speciesId string----------------------------------------------------------------------------------------------------
-                /*if (speciesID.includes("FLOETTE")) {
-                    console.log("hey");
-                }*/
+				//5: Get form from speciesId  =======================================================================
                 if (speciesID.includes("_")) {
                     var myArray = speciesID.split("_");
                     if (WeirdNameList.includes(myArray[0]+"_"+myArray[1])) {
@@ -187,7 +183,7 @@ function SelectLeague(pokedex) {
                     isWeirdName = true;
                     pokemonForm2 = "POMPOM";
                 }
-                //get the pokemon from the pokedex=================================
+                //6: get the pokemon from the pokedex  ===========================================================
                 if (isWeirdName) {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
                 } else {
@@ -201,10 +197,7 @@ function SelectLeague(pokedex) {
                         pokemonFormForFindingPokemonInPokemonDataList = "_" + pokemonForm;
                     }
                 }
-                /*if (count==113) { // for debugging
-                    console.log("1");
-                }*/
-                //get the pokemon from the pokemonDataLists=================================
+                //7: get the pokemon from the pokemonDataLists  =======================================================
                 if (pokemonName.includes("NIDORAN")) {
                     var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
                 } else {
@@ -213,7 +206,7 @@ function SelectLeague(pokedex) {
                 if (pokemonDataListMon==null) {
                     console.log("pokemon undefined");
                 }
-                //Get the pokemon type and add to the div to display the types
+                //8: Get the pokemon type and add to the div to display the types =====================================
                 if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
                     var pokmeonMegaVersionNumber = 0;
                     //Add check for extra mega forms here, mewtwo and charizard are the only ones so far, just add an or "||" to the if statement
@@ -234,7 +227,7 @@ function SelectLeague(pokedex) {
                 if (PokemonType2!="") {
                     PokemonTypeDiv2 = "<img src=\"../images/Pokemon/Types/" + PokemonType2 + "_BORDERED.png\" class=\"PokemonTypeDiv2\"/>";
                 }
-                /*PokemonTypeDiv = "<img src=\"../images/Pokemon/Types/" + PokemonType + "_BORDERED.png\" class=\"PokemonTypeDiv\"/>";*/
+				//9: Get pokemon IV's, XL and Best buddy status =======================================================
                 if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
                     //get the pokemons id for the mainbox string concatenation
                     ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
@@ -373,12 +366,13 @@ function SelectLeague(pokedex) {
                             alert('Default case');*/
                     }
                 }
-                else {
+                else { //pokemon is not fully stored in the db need to update this db entry ======================
                     ThePokemonsID ="000";
                     pokemonForm = "00";
                     speciesNameString = speciesNameString + "(MISSING)";
                     PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
                 }
+				//10: assemble the html and append to the mainbux ul ================================================
                 var picture = "../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + "_shiny.png";
                 var li = "<li><a id=\"" + speciesNameString + "\" href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3+ "</div></a></li>";
                 //dynamically paste the html into the view 
