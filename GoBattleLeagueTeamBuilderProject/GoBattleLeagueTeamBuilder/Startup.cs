@@ -48,7 +48,7 @@ namespace GoBattleLeagueTeamBuilder
 							//Azure Connection
 							opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
 							//local host connection
-							/*opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);*/
+							//opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
 							//azure connection
 							//opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
 
