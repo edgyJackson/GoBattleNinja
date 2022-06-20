@@ -11,12 +11,14 @@ using System.IO;
 
 namespace GoBattleLeagueTeamBuilder.Models.Repositories {
   public class GameMasterRepository:IGameMasterRepository {
-    private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
+    private readonly IRepository<Pokedex> _iRepository;
     private readonly IAdminUtilities _AdminUtilities;
+    private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
      
-    public GameMasterRepository(GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext,IAdminUtilities AdminUtilities) {
-      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
+    public GameMasterRepository(IRepository<Pokedex> iRepository,IAdminUtilities AdminUtilities,GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext) {
+      _iRepository = iRepository;
       _AdminUtilities = AdminUtilities;
+      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
     }
     /*public void GetGameMasterFileWithNewtonSoft()
     {
@@ -42,20 +44,19 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseStamina
         });
       }
-      //Add new pokemon to pokedex and update log files
-      using(StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt")) {
-        //Update the pokedex
-        for(int i = 0;i<listPokedexes.Count;i++) {
-          if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
-            continue;
-          }
-          await _goBattleLeagueTeamBuilderDBContext.Pokedexes.AddAsync(listPokedexes[i]);
-          sw.WriteLine("\r\n"+listPokedexes[i].PokemonId + " - " + listPokedexes[i].Name + " " + listPokedexes[i].Form + " " + listPokedexes[i].BaseAtk + " " + listPokedexes[i].BaseDef + " " + listPokedexes[i].BaseSta + " Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
-        }
-      }
-      await _AdminUtilities.GetPVPIVSForAllLeagues();
-      /*await _AdminUtilities.GreatLeagueAsync();*/
-    }
+			//Add new pokemon to pokedex and update log files
+			using StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
+			//Update the pokedex
+			for(int i = 0;i<listPokedexes.Count;i++) {
+				if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
+					continue;
+				}
+				await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
+				sw.WriteLine("\r\n"+listPokedexes[i].PokemonId+" - "+listPokedexes[i].Name+" "+listPokedexes[i].Form+" "+listPokedexes[i].BaseAtk+" "+listPokedexes[i].BaseDef+" "+listPokedexes[i].BaseSta+" Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
+			}
+			/*await _AdminUtilities.GetPVPIVSForAllLeagues();*/
+			/*await _AdminUtilities.GreatLeagueAsync();*/
+		}
 
     public async Task<bool> UpdatePokemonData(IHttpClientFactory HttpClientFactory) {
       return await HTTPClientGetJsonFromUrlAsync(HttpClientFactory);
@@ -123,10 +124,6 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           StreamWriter sw = new(@"./Data/pokemonDataListsJson.json");
           sw.WriteLine(pokemonDataListsJsonString);
           sw.Close(); 
-          //Pass the filepath and filename to the StreamWriter Constructor
-          sw = new(@"./Data/gameMasterFile.json");
-          sw.WriteLine(gameMasterFile);
-          sw.Close();
         }
       }
     }
