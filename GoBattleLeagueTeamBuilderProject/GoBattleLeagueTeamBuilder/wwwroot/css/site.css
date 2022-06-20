@@ -231,9 +231,9 @@ body {
 
 
 .MainBox .MainBoxUL {
-    width: 200px;
-    height: 200px;
-    margin: 12px;
+    width: 265px;
+    height: 265px;
+    margin: 3px;
     border-style: dashed;
     border-width: 4px;
     border-color: #D27D2D;
@@ -260,6 +260,8 @@ body {
 }
 
 .PokemonImage {
+    position: absolute;
+    top:70px;
     width: 45%;
     height: 45%;
     display: block;
@@ -281,8 +283,8 @@ body {
 
 .XLDiv {
     position: absolute;
-    top: 5px;
-    right: 29px;
+    top: 8px;
+    right: 36px;
     width: 15%;
     height: 9%
 }
@@ -290,7 +292,7 @@ body {
 .BestBuddy {
     position: absolute;
     top: 2px;
-    right: 60px;
+    right: 76px;
     width: 13%;
     height: 13%
 }
@@ -306,7 +308,7 @@ body {
     position: absolute;
     top: 0px;
     left: 2px;
-    line-height: 20px;
+    font-size: 25px;
     font-weight: bold;
     color: #FFFDD0;
 }
@@ -335,13 +337,47 @@ body {
 
 .PokemonNameDiv {
     position: absolute;
-    top: 25px;
+    top: 35px;
     line-height: 20px;
     font-weight: bold;
     color: white;
     font-size: 20px;
 }
-
+.PokemonTypeDiv1 {
+    position: absolute;
+    top: 60px;
+    left: 5px;
+    width: 9%;
+    height: 9%
+}
+.PokemonTypeDiv2 {
+    position: absolute;
+    top: 90px;
+    left: 5px;
+    width: 9%;
+    height: 9%
+}
+.PokemonMoveDiv1 {
+    position: absolute;
+    top: 185px;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+}
+.PokemonMoveDiv2 {
+    position: absolute;
+    top: 200px;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+}
+.PokemonMoveDiv3 {
+    position: absolute;
+    top: 215px;
+    line-height: 20px;
+    color: white;
+    font-size: 14px;
+}
 .shinyBtn {
     color: #fff;
     position: relative;

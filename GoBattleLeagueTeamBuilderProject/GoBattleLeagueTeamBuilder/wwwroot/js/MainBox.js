@@ -1,8 +1,8 @@
 //Data and variables needed for processing pokemon information
 var speciesNameRegEx = new RegExp("/^\S*/"); 
 var speciesFormRegEx = new RegExp("/\(.+?\)/");
-var pokemonForms = { "PIKACHU_FLYING":99,"STEEL":11,"ROCK":11,"PSYCHIC":11,"POISON":11,"ICE":11,"GROUND":11,"GRASS":11,"GHOST":11,"FIRE":11,"FIGHTING":11,"FAIRY":11,"ELECTRIC":11,"DRAGON":11,"DARK":11,"BUG":11,"ORIGINAL_COLOR":11,"ULTRA":11,"DUSK_MANE":11,"DAWN_WINGS":11,"YELLOW":20,"VIOLET":11,"RED":18,"ORANGE":17,"BUSTED":11,"INDIGO":11,"BLUE":16,"GREEN":11,"DISGUISED":11,"HANGRY":11,"NOICE":11,"FULL_BELLY":11,"CROWNED_SWORD":11,"ICE_RIDER":11,"SINGLE_STRIKE":11,"RAPID_STRIKE":11,"ETERNAMAX":11,"CROWNED_SHIELD":11,"PHONY": 11,"ANTIQUE": 11,"LOW_KEY": 11,"AMPED": 11,"STAR": 11,"PHARAOH": 11,"NATURAL": 11,"MATRON": 11,"LA_REINE": 11,"KABUKI": 11,"HEART": 11,"DIAMOND": 11, "DEBUTANTE": 11,"DANDY":11,"SOLO": 11, "SCHOOL": 11,"MIDNIGHT": 11, "MIDDAY": 12,"DUSK":11,"CONFINED":12,"SENSU": 16,"PAU": 19, "POM_POM": 17,"BAILE":18,"ALOLA":61,"HISUIAN":72,"COSTUME_2020":11,"A":11,"2021":11,"VS_2019":11,"FLYING_5TH_ANNIV":11,"COPY_2019": 11, "FALL_2019": 11,"ADVENTURE_HAT_2020":11,"FLYING_OKINAWA":11,"2020": 11,"2022": 11,"S": 11,"SHADOW_RIDER":11,"WATER":21,"EAST_SEA": 12,"WEST_SEA":11,"WINTER_2020": '00',"RED_STRIPED": 11, "BLUE_STRIPED": 12,"GALARIAN_ZEN": 12,"GALARIAN_STANDARD":31,"NORMAL":'00',"GALARIAN": 31, "DEFENSE": 13, "SHADOW": '00', "ALOLAN": 61, "SNOWY": 14, "RAINY": 13, "SUNNY": 12, "ATTACK": 12, "SPEED": 14, "PLANT": 11, "SANDY": 12, "TRASH": 13, "OVERCAST": 11, "SUNSHINE": 12, "WEST": 11, "EAST": 12, "REGULAR": 11, "HEAT": 12, "WASH": 13, "FAN": 15, "FROST": 14, "MOW": 15, "ORIGIN": 12, "ALTERED": 11, "LAND": 11, "SKY": 12, "STANDARD": 11, "ZEN": 12, "SPRING": 11, "SUMMER": 12, "AUTUMN": 13, "WINTER": 14, "INCARNATE": 11, "THERIAN": 12, "WHITE": 12, "BLACK": 13, "ORDINARY": 11, "RESOLUTE": 12, "ARIA": 11, "PIROUETTE": 12, "DOUSE": 12, "BURN": 14, "SHOCK": 13, "CHILL": 15, "ARMORED": 50, "HERO": 11, "UNBOUND": 11, "AVERAGE": 11, "LARGE": 12, "SMALL": 13, "SUPER": 14, "MALE": '00', "FEMALE": '01', "LIBRE": 16, "5TH_ANNIVERSARY": 12, "FLYING": 11, "KARIYUSHI": 13, "ROCK_STAR": 14, "POP_STAR": 15, "JR": '00', "NO_FORM":'00'};
-var dict = { "Fossil Cup": "1500","Go Battle League ML":"10000","CliffHanger ML":"10000","Championship Series ML":"10000","Mega ML":"10000","Go Battle League UL":"2500","CliffHanger UL":"2500","Championship Series UL":"2500","Mega UL":"2500","CliffHanger LL": "500","Championship Series LL":"500","Go Battle League LL":"500","Mega LL": "500","Mega GL":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master League Premier Classic": "10000", "Love Cup": "1500" };
+var pokemonForms = { "MEGA_X": 51, "MEGA_Y": 52, "MEGA": 51, "PIKACHU_FLYING":99,"STEEL":11,"ROCK":11,"PSYCHIC":11,"POISON":11,"ICE":11,"GROUND":11,"GRASS":11,"GHOST":11,"FIRE":11,"FIGHTING":11,"FAIRY":11,"ELECTRIC":11,"DRAGON":11,"DARK":11,"BUG":11,"ORIGINAL_COLOR":11,"ULTRA":11,"DUSK_MANE":11,"DAWN_WINGS":11,"YELLOW":20,"VIOLET":11,"RED":18,"ORANGE":17,"BUSTED":11,"INDIGO":11,"BLUE":16,"GREEN":11,"DISGUISED":11,"HANGRY":11,"NOICE":11,"FULL_BELLY":11,"CROWNED_SWORD":11,"ICE_RIDER":11,"SINGLE_STRIKE":11,"RAPID_STRIKE":11,"ETERNAMAX":11,"CROWNED_SHIELD":11,"PHONY": 11,"ANTIQUE": 11,"LOW_KEY": 11,"AMPED": 11,"STAR": 11,"PHARAOH": 11,"NATURAL": 11,"MATRON": 11,"LA_REINE": 11,"KABUKI": 11,"HEART": 11,"DIAMOND": 11, "DEBUTANTE": 11,"DANDY":11,"SOLO": 11, "SCHOOL": 11,"MIDNIGHT": 11, "MIDDAY": 12,"DUSK":11,"CONFINED":12,"SENSU": 16,"PAU": 19, "POM_POM": 17,"BAILE":18,"ALOLA":61,"HISUIAN":72,"COSTUME_2020":11,"A":11,"2021":11,"VS_2019":11,"FLYING_5TH_ANNIV":11,"COPY_2019": 11, "FALL_2019": 11,"ADVENTURE_HAT_2020":11,"FLYING_OKINAWA":11,"2020": 11,"2022": 11,"S": 11,"SHADOW_RIDER":11,"WATER":21,"EAST_SEA": 12,"WEST_SEA":11,"WINTER_2020": '00',"RED_STRIPED": 11, "BLUE_STRIPED": 12,"GALARIAN_ZEN": 12,"GALARIAN_STANDARD":31,"NORMAL":'00',"GALARIAN": 31, "DEFENSE": 13, "SHADOW": '00', "ALOLAN": 61, "SNOWY": 14, "RAINY": 13, "SUNNY": 12, "ATTACK": 12, "SPEED": 14, "PLANT": 11, "SANDY": 12, "TRASH": 13, "OVERCAST": 11, "SUNSHINE": 12, "WEST": 11, "EAST": 12, "REGULAR": 11, "HEAT": 12, "WASH": 13, "FAN": 15, "FROST": 14, "MOW": 15, "ORIGIN": 12, "ALTERED": 11, "LAND": 11, "SKY": 12, "STANDARD": 11, "ZEN": 12, "SPRING": 11, "SUMMER": 12, "AUTUMN": 13, "WINTER": 14, "INCARNATE": 11, "THERIAN": 12, "WHITE": 12, "BLACK": 13, "ORDINARY": 11, "RESOLUTE": 12, "ARIA": 11, "PIROUETTE": 12, "DOUSE": 12, "BURN": 14, "SHOCK": 13, "CHILL": 15, "ARMORED": 50, "HERO": 11, "UNBOUND": 11, "AVERAGE": 11, "LARGE": 12, "SMALL": 13, "SUPER": 14, "MALE": '00', "FEMALE": '01', "LIBRE": 16, "5TH_ANNIVERSARY": 12, "FLYING": 11, "KARIYUSHI": 13, "ROCK_STAR": 14, "POP_STAR": 15, "JR": '00', "NO_FORM":'00'};
+var LeagueDictionary = { "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Mega ML": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Mega UL": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Mega LL": "500","CliffHanger GL":"1500","Mega GL":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master League Premier Classic": "10000", "Love Cup": "1500" };
 var WeirdNameList = ["HAKAMO_O", "HO_OH", "JANGMO_O", "KOMMO_O", "PORYGON_Z", "MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL","NIDORAN_MALE","NIDORAN_FEMALE"];
 var NoHyphenList = ["MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL"];
 /*var TypeColors = {""};*/
@@ -58,18 +58,17 @@ function SearchFunction() {
 function SelectLeague(pokedex) {
     $(".menu-area a ").click(function () {
 
-        let jsonString = "https://raw.githubusercontent.com/pvpoke/pvpoke/master/src/data/rankings/" + this.id + "/overall/rankings-" + dict[this.textContent] + ".json";
+        let jsonString = "https://raw.githubusercontent.com/pvpoke/pvpoke/master/src/data/rankings/" + this.id + "/overall/rankings-" + LeagueDictionary[this.textContent] + ".json";
 
         document.getElementById("headerText").innerText = this.textContent;
         var LeagueSelected = this.textContent;
         //for shiny button
         var shiny = "";
         $.getJSON(jsonString, function (data) {
-
+            console.log("This list is " + data.length + " long!");
             $(".MainBox ul").empty();
-
             var count = 1;
-            for (i = 0; i < 950; i++) {
+            for (i = 0; i < data.length; i++) {
                 var speciesID = "";
                 var speciesNameString = "";
                 var pokemonName = "";
@@ -82,30 +81,52 @@ function SelectLeague(pokedex) {
                 var PokemonNameDiv = "";
                 var pokemonForm2 = "";
                 var isWeirdName = false;
-
-                //get the speciesId from pvpoke json and set it to uppercase; 
+                var PokemonTypeDiv1 = "";
+                var PokemonTypeDiv2 = "";
+                var PokemonType1 = "";
+                var PokemonType2 = "";
+                var move1 = data[i].moveset[0];
+                var move2 = data[i].moveset[1];
+                var move3 = data[i].moveset[2];
+				//1: Get the pokemon moves and format them =============================================================
+                if (move1.includes("_")) {
+                    move1 = data[i].moveset[0].replaceAll("_", " ")
+                }
+                if (move2.includes("_")) {
+                    move2 = data[i].moveset[1].replaceAll("_", " ")
+                }
+                if (move3!=null) {
+                    if (move3.includes("_")) {
+                        move3 = data[i].moveset[2].replaceAll("_", " ")
+                    }
+                }
+                var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + move1 + "</div>";
+                var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + move2 + "</div>";
+                var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
+                //2: get the pokemon name that will be displayed in the html mainbox div and check for purified =========
+                speciesNameString = data[i].speciesName;
+                if (data[i].moveset.includes("RETURN")) {
+                    speciesNameString = speciesNameString + " (Purified)";
+                    shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
+                }
+                PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
+                //3: get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
+                //also set _XS status  =======================================================================
                 speciesID = data[i].speciesId.toUpperCase();
-                //check if speciesID could not be retireved
-                /*if (speciesID == null || speciesID == "") {
-                    console.log("Species Id was not found " + data[i].speciesId);
-                }*/
                 if (speciesID.endsWith("_XS")) {
                     speciesID = speciesID.replace("_XS", "");
-                    LeagueSelected = "Great League Premier Classic";
+                    if (!(LeagueSelected.includes("LL") || (LeagueSelected.includes("Little")))) {
+                        LeagueSelected = "Great League Premier Classic";
+                    }
+                    console.log(data[i].speciesId);
                 }
-                //Check if shadow and fill shadowOrPurifiedOrXLBuddy if so, then remove the shadow from the speciesId
+                //4: Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the 
+				//speciesId  ======================================================================================
                 if (speciesID.endsWith("_SHADOW")) {
                     shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     speciesID=speciesID.replace("_SHADOW", "");
                 }
-                //check for purified
-                if (data[i].moveset.includes("RETURN")) {
-                  shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
-                }
-//----------------Parse out form from speciesId string----------------------------------------------------------------------------------------------------
-                /*if (speciesID.includes("FLOETTE")) {
-                    console.log("hey");
-                }*/
+				//5: Get form from speciesId  =======================================================================
                 if (speciesID.includes("_")) {
                     var myArray = speciesID.split("_");
                     if (WeirdNameList.includes(myArray[0]+"_"+myArray[1])) {
@@ -133,6 +154,10 @@ function SelectLeague(pokedex) {
                     pokemonForm = "NO_FORM";
                 }
                 //special cases
+                if (pokemonForm.includes("MEGA")) {
+                    isWeirdName = true;
+                    pokemonForm2 = "NO_FORM";
+                }
                 if (pokemonForm=="ALOLAN") {
                     pokemonForm = "ALOLA";
                 }
@@ -157,24 +182,53 @@ function SelectLeague(pokedex) {
                 if (speciesID == "ORICORIO_POM_POM") {
                     isWeirdName = true;
                     pokemonForm2 = "POMPOM";
-                }   
-                /*if (speciesID == "NIDORAN_FEMALE" || "NIDORAN_MALE" || "NIDOKING_MALE") {
-                isWeirdName = true;
-                pokemonForm2 = "POMPOM";
-                }*/
-                speciesNameString = data[i].speciesName;
-                if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
-                    speciesNameString = speciesNameString + "(Purified)";
                 }
-                PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
-                //get the pokemon from the pokedex
+                //6: get the pokemon from the pokedex  ===========================================================
                 if (isWeirdName) {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
                 } else {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm);
                 }
-
-                if(pokedexMon.length == 1) {
+                var pokemonFormForFindingPokemonInPokemonDataList = "";
+                if (pokemonForm != "NO_FORM" && !pokemonForm.includes("MEGA")) {
+                    if (isWeirdName) {
+                        pokemonFormForFindingPokemonInPokemonDataList = "_" + pokemonForm2;
+                    } else {
+                        pokemonFormForFindingPokemonInPokemonDataList = "_" + pokemonForm;
+                    }
+                }
+                //7: get the pokemon from the pokemonDataLists  =======================================================
+                if (pokemonName.includes("NIDORAN")) {
+                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                } else {
+                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                }
+                if (pokemonDataListMon==null) {
+                    console.log("pokemon undefined");
+                }
+                //8: Get the pokemon type and add to the div to display the types =====================================
+                if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
+                    var pokmeonMegaVersionNumber = 0;
+                    //Add check for extra mega forms here, mewtwo and charizard are the only ones so far, just add an or "||" to the if statement
+                    if (pokemonForm.includes("MEGA_Y")) {
+                        pokmeonMegaVersionNumber = 1;
+                    }
+                    PokemonType1 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride1;
+                    if (pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride2!=null) {
+                        PokemonType2 = pokemonDataListMon.pokemonSettings.tempEvoOverrides[pokmeonMegaVersionNumber].typeOverride2;
+                    }
+                } else {
+                    PokemonType1 = pokemonDataListMon.pokemonSettings.type;
+                    if (pokemonDataListMon.pokemonSettings.type2!=null) {
+                        PokemonType2 = pokemonDataListMon.pokemonSettings.type2;
+                    }
+                }
+                PokemonTypeDiv1 = "<img src=\"../images/Pokemon/Types/" + PokemonType1 + "_BORDERED.png\" class=\"PokemonTypeDiv1\"/>";
+                if (PokemonType2!="") {
+                    PokemonTypeDiv2 = "<img src=\"../images/Pokemon/Types/" + PokemonType2 + "_BORDERED.png\" class=\"PokemonTypeDiv2\"/>";
+                }
+				//9: Get pokemon IV's, XL and Best buddy status =======================================================
+                if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
                     //get the pokemons id for the mainbox string concatenation
                     ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
                     pokemonForm = pokemonForms[pokemonForm];
@@ -199,6 +253,19 @@ function SelectLeague(pokedex) {
                             }
                             //Get Ivs and add them to the html string to be displayed
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].llcP + " LV: " + pokedexMon[0].lllevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].lldefIv + "/" + pokedexMon[0].llstaIv + "</span></div>";
+                            break;
+                        case "Little League Premier Classic":
+                            //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
+                            var purifiedAttackStat = pokedexMon[0].glclassicatkIv;
+                            if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
+                                if (pokedexMon[0].glclassicatkIv < 2) {
+                                    purifiedAttackStat = 2;
+                                }
+                            }
+                            //check for best buddy in little league classic----------------------------------------------------------------update-------------------------------------------------
+                            if (pokedexMon[0].glclassiclevel == 41 || pokedexMon[0].glclassiclevel == 40.5) { shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>"; }
+                            //Get Ivs and add them to the html string to be displayed
+                            displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glclassiccP + " LV: " + pokedexMon[0].glclassiclevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].glclassicdefIv + "/" + pokedexMon[0].glclassicstaIv + "</span></div>";
                             break;
                         case "Great League":
                         case "Great League Remix":
@@ -299,17 +366,17 @@ function SelectLeague(pokedex) {
                             alert('Default case');*/
                     }
                 }
-                else {
+                else { //pokemon is not fully stored in the db need to update this db entry ======================
                     ThePokemonsID ="000";
                     pokemonForm = "00";
                     speciesNameString = speciesNameString + "(MISSING)";
                     PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
                 }
+				//10: assemble the html and append to the mainbux ul ================================================
                 var picture = "../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + "_shiny.png";
-                var li = "<li><a id=\"" + speciesNameString + "\" href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + "</div></a></li>";
+                var li = "<li><a id=\"" + speciesNameString + "\" href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3+ "</div></a></li>";
                 //dynamically paste the html into the view 
                 $(".MainBox ul").append(li);
-
                 //increase count
                 count++;
             }
