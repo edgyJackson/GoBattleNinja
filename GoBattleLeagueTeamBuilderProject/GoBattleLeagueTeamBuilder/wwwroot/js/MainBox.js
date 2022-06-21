@@ -87,30 +87,15 @@ function SelectLeague(pokedex) {
                 var PokemonType2 = "";
                 var move1 = data[i].moveset[0];
                 var move2 = data[i].moveset[1];
-                var move3 = data[i].moveset[2];
-				//1: Get the pokemon moves and format them =============================================================
-                if (move1.includes("_")) {
-                    move1 = data[i].moveset[0].replaceAll("_", " ")
-                }
-                if (move2.includes("_")) {
-                    move2 = data[i].moveset[1].replaceAll("_", " ")
-                }
-                if (move3!=null) {
-                    if (move3.includes("_")) {
-                        move3 = data[i].moveset[2].replaceAll("_", " ")
-                    }
-                }
-                var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + move1 + "</div>";
-                var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + move2 + "</div>";
-                var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
-                //2: get the pokemon name that will be displayed in the html mainbox div and check for purified =========
+                var move3 = data[i].moveset[2]??"";
+                //1: get the pokemon name that will be displayed in the html mainbox div and check for purified =========
                 speciesNameString = data[i].speciesName;
                 if (data[i].moveset.includes("RETURN")) {
                     speciesNameString = speciesNameString + " (Purified)";
                     shadowOrPurifiedOrXLBuddy = "<img src=\"../images/Pokemon/ic_purified.png\" class=\"ShadowOrPurified\"/>";
                 }
                 PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
-                //3: get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
+                //2: get the speciesId from pvpoke json and set it to uppercase; for finding the pokemon in the pokedex/database
                 //also set _XS status  =======================================================================
                 speciesID = data[i].speciesId.toUpperCase();
                 if (speciesID.endsWith("_XS")) {
@@ -120,13 +105,13 @@ function SelectLeague(pokedex) {
                     }
                     console.log(data[i].speciesId);
                 }
-                //4: Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the 
+                //3: Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the 
 				//speciesId  ======================================================================================
                 if (speciesID.endsWith("_SHADOW")) {
                     shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     speciesID=speciesID.replace("_SHADOW", "");
                 }
-				//5: Get form from speciesId  =======================================================================
+				//4: Get form from speciesId  =======================================================================
                 if (speciesID.includes("_")) {
                     var myArray = speciesID.split("_");
                     if (WeirdNameList.includes(myArray[0]+"_"+myArray[1])) {
@@ -183,7 +168,7 @@ function SelectLeague(pokedex) {
                     isWeirdName = true;
                     pokemonForm2 = "POMPOM";
                 }
-                //6: get the pokemon from the pokedex  ===========================================================
+                //5: get the pokemon from the pokedex  ===========================================================
                 if (isWeirdName) {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
                 } else {
@@ -197,7 +182,7 @@ function SelectLeague(pokedex) {
                         pokemonFormForFindingPokemonInPokemonDataList = "_" + pokemonForm;
                     }
                 }
-                //7: get the pokemon from the pokemonDataLists  =======================================================
+                //6: get the pokemon from the pokemonDataLists  =======================================================
                 if (pokemonName.includes("NIDORAN")) {
                     var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
                 } else {
@@ -206,6 +191,36 @@ function SelectLeague(pokedex) {
                 if (pokemonDataListMon==null) {
                     console.log("pokemon undefined");
                 }
+                //check for legacy moves
+                if (pokemonDataListMon.pokemonSettings.eliteQuickMove!=null) {
+                    if (pokemonDataListMon.pokemonSettings.eliteQuickMove.includes(move1 +"_FAST")) {
+                        move1 = move1 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
+                    }
+                }
+                if (pokemonDataListMon.pokemonSettings.eliteCinematicMove != null) {
+                    if (pokemonDataListMon.pokemonSettings.eliteCinematicMove.includes(move2)) {
+                        move2 = move2 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
+                    }
+                    if (move3!="" && pokemonDataListMon.pokemonSettings.eliteCinematicMove.includes(move3)) {
+                        move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
+                    }
+                }
+                //7: Get the pokemon moves and format them =============================================================
+                if (move1.includes("_")) {
+                    move1 = move1.replaceAll("_", " ")
+                }
+                if (move2.includes("_")) {
+                    move2 = move2.replaceAll("_", " ")
+                }
+                if (move3 != null) {
+                    if (move3.includes("_")) {
+                        move3 = move3.replaceAll("_", " ")
+                    }
+                }
+                var PokemonMoveDiv1 = "<div class = 'PokemonMoveDiv1'>" + move1 + "</div>";
+                var PokemonMoveDiv2 = "<div class = 'PokemonMoveDiv2'>" + move2 + "</div>";
+                var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
+
                 //8: Get the pokemon type and add to the div to display the types =====================================
                 if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
                     var pokmeonMegaVersionNumber = 0;
