@@ -318,6 +318,11 @@ body {
     color: #00FF00;
 }
 
+.LegacyMoveStyle {
+    font-weight: bold;
+    color: #FFD700;
+}
+
 .pokemon-search-bar {
     margin-bottom: 15px;
 }
