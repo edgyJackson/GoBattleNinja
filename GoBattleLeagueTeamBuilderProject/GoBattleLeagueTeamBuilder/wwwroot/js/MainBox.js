@@ -5,24 +5,10 @@ var pokemonForms = { "MEGA_X": 51, "MEGA_Y": 52, "MEGA": 51, "PIKACHU_FLYING":99
 var LeagueDictionary = { "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Mega ML": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Mega UL": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Mega LL": "500","CliffHanger GL":"1500","Mega GL":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master League Premier Classic": "10000", "Love Cup": "1500" };
 var WeirdNameList = ["HAKAMO_O", "HO_OH", "JANGMO_O", "KOMMO_O", "PORYGON_Z", "MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL","NIDORAN_MALE","NIDORAN_FEMALE"];
 var NoHyphenList = ["MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL"];
-/*var TypeColors = {""};*/
-//async causing json not to load properly: set to false for debugging
-/*var pokedex =$.ajax({
-    type: "GET",
-    url: "/Home/GetPokedex",
-    async: true,
-    dataType: 'json',
-}).responseJSON;
-
-$(document).ready(function () {
-    SelectLeague();
-});*/
-
 $(document).ready(function () {
     $.ajax({
         type: "POST",
         dataType: "json",
-        async: false,
         url: "Home/GetPokedex/",
         success: SelectLeague,
         error: errorOnAjax
@@ -106,12 +92,12 @@ function SelectLeague(pokedex) {
                     console.log(data[i].speciesId);
                 }
                 //3: Check if pokemon is a shadow form and fill shadowOrPurifiedOrXLBuddy if true, then remove the shadow from the 
-				//speciesId  ======================================================================================
+				        //speciesId  ======================================================================================
                 if (speciesID.endsWith("_SHADOW")) {
                     shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/ic_shadow.png\" class=\"ShadowOrPurified\"/>";
                     speciesID=speciesID.replace("_SHADOW", "");
                 }
-				//4: Get form from speciesId  =======================================================================
+				        //4: Get form from speciesId  =======================================================================
                 if (speciesID.includes("_")) {
                     var myArray = speciesID.split("_");
                     if (WeirdNameList.includes(myArray[0]+"_"+myArray[1])) {
@@ -188,9 +174,7 @@ function SelectLeague(pokedex) {
                 } else {
                     var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
                 }
-                if (pokemonDataListMon==null) {
-                    console.log("pokemon undefined");
-                }
+                //7: Get the pokemon moves and format them =============================================================
                 //check for legacy moves
                 if (pokemonDataListMon.pokemonSettings.eliteQuickMove!=null) {
                     if (pokemonDataListMon.pokemonSettings.eliteQuickMove.includes(move1 +"_FAST")) {
@@ -205,7 +189,6 @@ function SelectLeague(pokedex) {
                         move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
                     }
                 }
-                //7: Get the pokemon moves and format them =============================================================
                 if (move1.includes("_")) {
                     move1 = move1.replaceAll("_", " ")
                 }
@@ -242,7 +225,7 @@ function SelectLeague(pokedex) {
                 if (PokemonType2!="") {
                     PokemonTypeDiv2 = "<img src=\"../images/Pokemon/Types/" + PokemonType2 + "_BORDERED.png\" class=\"PokemonTypeDiv2\"/>";
                 }
-				//9: Get pokemon IV's, XL and Best buddy status =======================================================
+				        //9: Get pokemon IV's, XL and Best buddy status =======================================================
                 if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
                     //get the pokemons id for the mainbox string concatenation
                     ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
