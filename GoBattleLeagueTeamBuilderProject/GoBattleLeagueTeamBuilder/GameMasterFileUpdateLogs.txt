@@ -20,3 +20,10 @@ Game Master File Updated 7/2/2022 8:28:32 PM -----------------------------------
 Game Master File Updated 7/9/2022 3:07:24 AM --------------------------------------------
 Game Master File Updated 7/14/2022 2:06:35 AM --------------------------------------------
 211 - QWILFISH NORMAL 184 138 163 Img Path: pokemon_icon_211_00_shiny.png
+
+Game Master File Updated 7/22/2022 10:51:32 PM --------------------------------------------
+144 - ARTICUNO GALARIAN 250 197 207 Img Path: pokemon_icon_144_00_shiny.png
+
+145 - ZAPDOS GALARIAN 252 189 207 Img Path: pokemon_icon_145_00_shiny.png
+
+146 - MOLTRES GALARIAN 202 231 207 Img Path: pokemon_icon_146_00_shiny.png
