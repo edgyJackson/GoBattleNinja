@@ -154,6 +154,10 @@ function SelectLeague(pokedex) {
                     isWeirdName = true;
                     pokemonForm2 = "POMPOM";
                 }
+                //For debugging
+                if(data[i].speciesId.toUpperCase() == "JANGMO_O") {
+                    console.log("hi");
+                }
                 //5: get the pokemon from the pokedex  ===========================================================
                 if (isWeirdName) {
                     var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
@@ -225,7 +229,7 @@ function SelectLeague(pokedex) {
                 if (PokemonType2!="") {
                     PokemonTypeDiv2 = "<img src=\"../images/Pokemon/Types/" + PokemonType2 + "_BORDERED.png\" class=\"PokemonTypeDiv2\"/>";
                 }
-				        //9: Get pokemon IV's, XL and Best buddy status =======================================================
+				//9: Get pokemon IV's, XL and Best buddy status =======================================================
                 if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
                     //get the pokemons id for the mainbox string concatenation
                     ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
