@@ -58,9 +58,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task GreatLeagueAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            /*if(pokemon.GlcP!=null) {
+            if(pokemon.GlcP!=null) {
               continue;
-            }*/
+            }
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(1500,(int)pokedexEntry.BaseAtk,(int)pokedexEntry.BaseDef,(int)pokedexEntry.BaseSta,51);
             pokedexEntry.GlatkIv=TheIVPerformance.iVS.atkIV;
@@ -79,9 +79,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task GreatLeagueClassicAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            /*if(pokemon.GlclassiccP!=null) {
+            if(pokemon.GlclassiccP!=null) {
               continue;
-            }*/
+            }
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
             pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
@@ -100,9 +100,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task UltraLeagueAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            /*if(pokemon.UlcP!=null) {
+            if(pokemon.UlcP!=null) {
               continue;
-            }*/
+            }
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
             pokedexEntry.UlatkIv = TheIVPerformance.iVS.atkIV;
@@ -121,9 +121,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task UltraLeagueClassicAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            /*if(pokemon.UlclassiccP!=null) {
+            if(pokemon.UlclassiccP!=null) {
               continue;
-            }*/
+            }
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
             pokedexEntry.UlclassicatkIv = TheIVPerformance.iVS.atkIV;
