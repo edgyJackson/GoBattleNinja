@@ -27,3 +27,24 @@ Game Master File Updated 7/22/2022 10:51:32 PM ---------------------------------
 145 - ZAPDOS GALARIAN 252 189 207 Img Path: pokemon_icon_145_00_shiny.png
 
 146 - MOLTRES GALARIAN 202 231 207 Img Path: pokemon_icon_146_00_shiny.png
+
+Game Master File Updated 7/27/2022 7:14:32 PM --------------------------------------------
+58 - GROWLITHE HISUIAN 142 92 155 Img Path: pokemon_icon_58_00_shiny.png
+
+59 - ARCANINE HISUIAN 232 165 216 Img Path: pokemon_icon_59_00_shiny.png
+
+211 - QWILFISH HISUIAN 184 151 163 Img Path: pokemon_icon_211_00_shiny.png
+
+215 - SNEASEL HISUIAN 189 146 146 Img Path: pokemon_icon_215_00_shiny.png
+
+628 - BRAVIARY HISUIAN 213 137 242 Img Path: pokemon_icon_628_00_shiny.png
+
+628 - BRAVIARY NORMAL 232 152 225 Img Path: pokemon_icon_628_00_shiny.png
+
+903 - SNEASLER NO_FORM 259 158 190 Img Path: pokemon_icon_903_00_shiny.png
+
+904 - OVERQWIL NO_FORM 222 171 198 Img Path: pokemon_icon_904_00_shiny.png
+
+Game Master File Updated 7/27/2022 8:34:53 PM --------------------------------------------
+Game Master File Updated 7/27/2022 8:40:21 PM --------------------------------------------
+Game Master File Updated 7/27/2022 8:46:16 PM --------------------------------------------

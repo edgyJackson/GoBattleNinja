@@ -15,12 +15,14 @@ namespace GoBattleLeagueTeamBuilder.Services
         private readonly IPokedexRepository _pokedex;
         private readonly ISendHTTPWebRequest _SendHttpRequest;
         private readonly IRepository<Pokedex> _repo;
-        public AdminUtilities(IPVP_IVsAPIRepository pvpIVAPIkedex, IPokedexRepository pokedex, ISendHTTPWebRequest SendHttpRequest, IRepository<Pokedex> repo)
+        private readonly GoBattleLeagueTeamBuilderDBContext _context;
+        public AdminUtilities(IPVP_IVsAPIRepository pvpIVAPIkedex, IPokedexRepository pokedex, ISendHTTPWebRequest SendHttpRequest, IRepository<Pokedex> repo,GoBattleLeagueTeamBuilderDBContext context)
         {
             _pvpIVAPI = pvpIVAPIkedex;
             _pokedex = pokedex;
             _SendHttpRequest = SendHttpRequest;
             _repo = repo;
+            _context = context;
         }
 
         public async Task GetPVPIVSForAllLeagues() {
@@ -33,117 +35,108 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task LittleLeagueAsync()
         {
-            for (int i = 1; i <_pokedex.GetCount()+1; i++)
-            {
-				        if(_pokedex.GetPokedexEntryByID(i).LlcP!=null) {
-                  continue;
-				        }
-                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+			    foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+            if(pokemon.LlcP!=null){
+              continue;
+						}
+            var pokedexEntry = pokemon;
+            var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+            pokedexEntry.LlatkIv = TheIVPerformance.iVS.atkIV;
+            pokedexEntry.LldefIv = TheIVPerformance.iVS.defIV;
+            pokedexEntry.LlstaIv = TheIVPerformance.iVS.staIV;
+            pokedexEntry.Lllevel = TheIVPerformance.level;
+            pokedexEntry.LlcP = TheIVPerformance.cP;
+            pokedexEntry.LlatkStat = TheIVPerformance.stats.atkStat;
+            pokedexEntry.LldefStat = TheIVPerformance.stats.defStat;
+            pokedexEntry.LlstaStat = TheIVPerformance.stats.staStat;
+            pokedexEntry.LlstatProduct = TheIVPerformance.statProduct;
+            await _repo.AddOrUpdateAsync(pokedexEntry);
 
-                pokedexEntry.LlatkIv = TheIVPerformance.iVS.atkIV;
-                pokedexEntry.LldefIv = TheIVPerformance.iVS.defIV;
-                pokedexEntry.LlstaIv = TheIVPerformance.iVS.staIV;
-                pokedexEntry.Lllevel = TheIVPerformance.level;
-                pokedexEntry.LlcP = TheIVPerformance.cP;
-                pokedexEntry.LlatkStat = TheIVPerformance.stats.atkStat;
-                pokedexEntry.LldefStat = TheIVPerformance.stats.defStat;
-                pokedexEntry.LlstaStat = TheIVPerformance.stats.staStat;
-                pokedexEntry.LlstatProduct = TheIVPerformance.statProduct;
-                await _repo.AddOrUpdateAsync(pokedexEntry);
-            }          
+			    }          
         }
 
         public async Task GreatLeagueAsync()
         {
-            for (int i = 1; i <_pokedex.GetCount()+1; i++)
-            {
-                if(_pokedex.GetPokedexEntryByID(i).GlcP!=null) {
-                  continue;
-				        }
-                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
-
-                pokedexEntry.GlatkIv = TheIVPerformance.iVS.atkIV;
-                pokedexEntry.GldefIv = TheIVPerformance.iVS.defIV;
-                pokedexEntry.GlstaIv = TheIVPerformance.iVS.staIV;
-                pokedexEntry.Gllevel = TheIVPerformance.level;
-                pokedexEntry.GlcP = TheIVPerformance.cP;
-                pokedexEntry.GlatkStat = TheIVPerformance.stats.atkStat;
-                pokedexEntry.GldefStat = TheIVPerformance.stats.defStat;
-                pokedexEntry.GlstaStat = TheIVPerformance.stats.staStat;
-                pokedexEntry.GlstatProduct = TheIVPerformance.statProduct;
-                await _repo.AddOrUpdateAsync(pokedexEntry);
-            }
+          foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+            /*if(pokemon.GlcP!=null) {
+              continue;
+            }*/
+            var pokedexEntry = pokemon;
+            var TheIVPerformance = _pvpIVAPI.GetBestIV(1500,(int)pokedexEntry.BaseAtk,(int)pokedexEntry.BaseDef,(int)pokedexEntry.BaseSta,51);
+            pokedexEntry.GlatkIv=TheIVPerformance.iVS.atkIV;
+            pokedexEntry.GldefIv=TheIVPerformance.iVS.defIV;
+            pokedexEntry.GlstaIv=TheIVPerformance.iVS.staIV;
+            pokedexEntry.Gllevel=TheIVPerformance.level;
+            pokedexEntry.GlcP=TheIVPerformance.cP;
+            pokedexEntry.GlatkStat=TheIVPerformance.stats.atkStat;
+            pokedexEntry.GldefStat=TheIVPerformance.stats.defStat;
+            pokedexEntry.GlstaStat=TheIVPerformance.stats.staStat;
+            pokedexEntry.GlstatProduct=TheIVPerformance.statProduct;
+            await _repo.AddOrUpdateAsync(pokedexEntry);
+          }
         }
 
         public async Task GreatLeagueClassicAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount()+1; i++)
-            {
-                if(_pokedex.GetPokedexEntryByID(i).GlclassiccP!=null) {
-                  continue;
-				        }
-                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
-
-                pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
-                pokedexEntry.GlclassicdefIv = TheIVPerformance.iVS.defIV;
-                pokedexEntry.GlclassicstaIv = TheIVPerformance.iVS.staIV;
-                pokedexEntry.Glclassiclevel = TheIVPerformance.level;
-                pokedexEntry.GlclassiccP = TheIVPerformance.cP;
-                pokedexEntry.GlclassicatkStat = TheIVPerformance.stats.atkStat;
-                pokedexEntry.GlclassicdefStat = TheIVPerformance.stats.defStat;
-                pokedexEntry.GlclassicstaStat = TheIVPerformance.stats.staStat;
-                pokedexEntry.GlclassicstatProduct = TheIVPerformance.statProduct;
-                await _repo.AddOrUpdateAsync(pokedexEntry);
-            }
+          foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+            /*if(pokemon.GlclassiccP!=null) {
+              continue;
+            }*/
+            var pokedexEntry = pokemon;
+            var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
+            pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
+            pokedexEntry.GlclassicdefIv = TheIVPerformance.iVS.defIV;
+            pokedexEntry.GlclassicstaIv = TheIVPerformance.iVS.staIV;
+            pokedexEntry.Glclassiclevel = TheIVPerformance.level;
+            pokedexEntry.GlclassiccP = TheIVPerformance.cP;
+            pokedexEntry.GlclassicatkStat = TheIVPerformance.stats.atkStat;
+            pokedexEntry.GlclassicdefStat = TheIVPerformance.stats.defStat;
+            pokedexEntry.GlclassicstaStat = TheIVPerformance.stats.staStat;
+            pokedexEntry.GlclassicstatProduct = TheIVPerformance.statProduct;
+            await _repo.AddOrUpdateAsync(pokedexEntry);
+          }          
         }
 
         public async Task UltraLeagueAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount()+1; i++)
-            {
-                if(_pokedex.GetPokedexEntryByID(i).UlcP!=null) {
-                  continue;
-				        }
-                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
-
-                pokedexEntry.UlatkIv = TheIVPerformance.iVS.atkIV;
-                pokedexEntry.UldefIv = TheIVPerformance.iVS.defIV;
-                pokedexEntry.UlstaIv = TheIVPerformance.iVS.staIV;
-                pokedexEntry.Ullevel = TheIVPerformance.level;
-                pokedexEntry.UlcP = TheIVPerformance.cP;
-                pokedexEntry.UlatkStat = TheIVPerformance.stats.atkStat;
-                pokedexEntry.UldefStat = TheIVPerformance.stats.defStat;
-                pokedexEntry.UlstaStat = TheIVPerformance.stats.staStat;
-                pokedexEntry.UlstatProduct = TheIVPerformance.statProduct;
-                await _repo.AddOrUpdateAsync(pokedexEntry);
-            }
+          foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+            /*if(pokemon.UlcP!=null) {
+              continue;
+            }*/
+            var pokedexEntry = pokemon;
+            var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+            pokedexEntry.UlatkIv = TheIVPerformance.iVS.atkIV;
+            pokedexEntry.UldefIv = TheIVPerformance.iVS.defIV;
+            pokedexEntry.UlstaIv = TheIVPerformance.iVS.staIV;
+            pokedexEntry.Ullevel = TheIVPerformance.level;
+            pokedexEntry.UlcP = TheIVPerformance.cP;
+            pokedexEntry.UlatkStat = TheIVPerformance.stats.atkStat;
+            pokedexEntry.UldefStat = TheIVPerformance.stats.defStat;
+            pokedexEntry.UlstaStat = TheIVPerformance.stats.staStat;
+            pokedexEntry.UlstatProduct = TheIVPerformance.statProduct;
+            await _repo.AddOrUpdateAsync(pokedexEntry);
+          }          
         }
 
         public async Task UltraLeagueClassicAsync()
         {
-            for (int i = 1; i < _pokedex.GetCount()+1; i++)
-            {
-                if(_pokedex.GetPokedexEntryByID(i).UlclassiccP!=null) {
-                  continue;
-				        }
-                var pokedexEntry = _pokedex.GetPokedexEntryByID(i);
-                var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
-
-                pokedexEntry.UlclassicatkIv = TheIVPerformance.iVS.atkIV;
-                pokedexEntry.UlclassicdefIv = TheIVPerformance.iVS.defIV;
-                pokedexEntry.UlclassicstaIv = TheIVPerformance.iVS.staIV;
-                pokedexEntry.Ulclassiclevel = TheIVPerformance.level;
-                pokedexEntry.UlclassiccP = TheIVPerformance.cP;
-                pokedexEntry.UlclassicatkStat = TheIVPerformance.stats.atkStat;
-                pokedexEntry.UlclassicdefStat = TheIVPerformance.stats.defStat;
-                pokedexEntry.UlclassicstaStat = TheIVPerformance.stats.staStat;
-                pokedexEntry.UlclassicstatProduct = TheIVPerformance.statProduct;
-                await _repo.AddOrUpdateAsync(pokedexEntry);
-            }
+          foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+            /*if(pokemon.UlclassiccP!=null) {
+              continue;
+            }*/
+            var pokedexEntry = pokemon;
+            var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
+            pokedexEntry.UlclassicatkIv = TheIVPerformance.iVS.atkIV;
+            pokedexEntry.UlclassicdefIv = TheIVPerformance.iVS.defIV;
+            pokedexEntry.UlclassicstaIv = TheIVPerformance.iVS.staIV;
+            pokedexEntry.Ulclassiclevel = TheIVPerformance.level;
+            pokedexEntry.UlclassiccP = TheIVPerformance.cP;
+            pokedexEntry.UlclassicatkStat = TheIVPerformance.stats.atkStat;
+            pokedexEntry.UlclassicdefStat = TheIVPerformance.stats.defStat;
+            pokedexEntry.UlclassicstaStat = TheIVPerformance.stats.staStat;
+            pokedexEntry.UlclassicstatProduct = TheIVPerformance.statProduct;
+            await _repo.AddOrUpdateAsync(pokedexEntry);
+          }
         }
 
         public void GeneratePokedexSeedFileWithBaseStats()

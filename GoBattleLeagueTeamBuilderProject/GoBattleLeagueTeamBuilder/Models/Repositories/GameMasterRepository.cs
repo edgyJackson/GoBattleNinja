@@ -14,11 +14,11 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
     private readonly IRepository<Pokedex> _iRepository;
     private readonly IAdminUtilities _AdminUtilities;
     private readonly GoBattleLeagueTeamBuilderDBContext _goBattleLeagueTeamBuilderDBContext;
-     
+
     public GameMasterRepository(IRepository<Pokedex> iRepository,IAdminUtilities AdminUtilities,GoBattleLeagueTeamBuilderDBContext goBattleLeagueTeamBuilderDBContext) {
-      _iRepository = iRepository;
-      _AdminUtilities = AdminUtilities;
-      _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
+      _iRepository=iRepository;
+      _AdminUtilities=AdminUtilities;
+      _goBattleLeagueTeamBuilderDBContext=goBattleLeagueTeamBuilderDBContext;
     }
     /*public void GetGameMasterFileWithNewtonSoft()
     {
@@ -26,13 +26,13 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
         JArray geo = JArray.Parse(gameMasterFileJsonString); 
     }*/
     public async Task UpdateThePokedexAsync(IHttpClientFactory _IHttpClientFactory) {
-      PokemonDataLists pokemonDataLists=new();
-      if(!await HTTPClientGetJsonFromUrlAsync(_IHttpClientFactory)) { 
-        return; 
+      PokemonDataLists pokemonDataLists = new();
+      if(!await HTTPClientGetJsonFromUrlAsync(_IHttpClientFactory)) {
+        return;
       }
-      using var fs=new FileStream(@"./Data/pokemonDataListsJson.json",FileMode.Open,FileAccess.Read);
+      using var fs = new FileStream(@"./Data/pokemonDataListsJson.json",FileMode.Open,FileAccess.Read);
       pokemonDataLists=await JsonSerializer.DeserializeAsync<PokemonDataLists>(fs,new JsonSerializerOptions { PropertyNameCaseInsensitive=true });
-      List<Pokedex>listPokedexes=new();
+      List<Pokedex> listPokedexes = new();
       for(int i = 0;i<pokemonDataLists.ListPokemonSettings.Count;i++) {
         listPokedexes.Add(new Pokedex {
           PokemonId=int.Parse(pokemonDataLists.ListPokemonSettings[i].templateId.Substring(1,4)),
@@ -43,19 +43,29 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseStamina
         });
       }
-	 //Add new pokemon to pokedex and update log files
-	 using StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
-	 //Update the pokedex
-	 for(int i = 0;i<listPokedexes.Count;i++) {
-		 if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
-			 continue;
-		 }
-		 await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
-		 sw.WriteLine("\r\n"+listPokedexes[i].PokemonId+" - "+listPokedexes[i].Name+" "+listPokedexes[i].Form+" "+listPokedexes[i].BaseAtk+" "+listPokedexes[i].BaseDef+" "+listPokedexes[i].BaseSta+" Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_00_shiny.png");
-	 }
-	 /*await _AdminUtilities.GetPVPIVSForAllLeagues();*/
-	 /*await _AdminUtilities.GreatLeagueAsync();*/
-	}
+      //Add new pokemon to pokedex and update log files
+      using StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
+      //Update the pokedex
+      var formDictionary = new Dictionary<string,string>()
+        {
+          {"GALARIAN", "31"},
+          {"ALOLA", "61" },
+          {"ALOLAN", "61"},
+          {"HISUIAN", "72"}
+        };
+      for(int i = 0;i<listPokedexes.Count;i++) {
+        if(_goBattleLeagueTeamBuilderDBContext.Pokedexes.Any(c => c.Name==listPokedexes[i].Name&&c.Form==listPokedexes[i].Form)) {
+          continue;
+        }
+        string form = "00";
+        if(formDictionary.ContainsKey(listPokedexes[i].Form.ToUpper())) {
+          form=formDictionary[listPokedexes[i].Form.ToUpper()];
+        }
+        await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
+        sw.WriteLine("\r\n"+listPokedexes[i].PokemonId+",'"+listPokedexes[i].Name+"','"+listPokedexes[i].Form+"',"+listPokedexes[i].BaseAtk+","+listPokedexes[i].BaseDef+","+listPokedexes[i].BaseSta+",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_" + form + "_shiny.png");
+      }
+      await _AdminUtilities.GetPVPIVSForAllLeagues();
+    } 
 
     public async Task<bool> HTTPClientGetJsonFromUrlAsync(IHttpClientFactory HttpClientFactory) {
       bool gameMasterFileWasUpdated=false;
