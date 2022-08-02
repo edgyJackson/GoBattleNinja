@@ -302,6 +302,7 @@ body {
     bottom: 0px;
     margin: auto;
     font-size: 16px;
+    color: #FFFF00;
 }
 
 .countDiv {
@@ -397,3 +398,5 @@ body {
     background: #FFD700;
     /*background: linear-gradient(to right,#FFD700,d4af37);*/
 }
+
+

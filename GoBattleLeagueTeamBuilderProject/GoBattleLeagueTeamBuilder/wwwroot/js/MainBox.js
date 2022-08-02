@@ -30,7 +30,7 @@ function SearchFunction() {
 
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < li.length; i++) {
-        a = li[i].getElementsByTagName("a")[0];
+        a = li[i].getElementsByTagName("div")[0];
         txtValue = a.id;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
             li[i].style.display = "";
@@ -376,16 +376,17 @@ function SelectLeague(pokedex) {
                     pokemonForm = "00";
                     speciesNameString = speciesNameString + "(MISSING)";
                     PokemonNameDiv = "<div class = 'PokemonNameDiv'>" + speciesNameString + "</div>";
-                }
+                } 
 				//10: assemble the html and append to the mainbux ul ================================================
                 var picture = "../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png";
-                var li = "<li><a id=\"" + speciesNameString + "\" href=\"#\"><div class='MainBoxUL' id=\"" + ThePokemonsID + "\"><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3+ "</div></a></li>";
+                var li = "<li><div class='MainBoxUL' id=\"" + speciesNameString + ThePokemonsID + PokemonType1 + PokemonType2 + "\" data-toggle='tooltip' data-placement='top' data-trigger='hover' title='" + ThePokemonsID +"'><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3 + "</div></li>";
                 //dynamically paste the html into the view 
                 $(".MainBox ul").append(li);
                 //increase count
                 count++;
             }
         }); 
+        SearchFunction();
     });
 }
 
