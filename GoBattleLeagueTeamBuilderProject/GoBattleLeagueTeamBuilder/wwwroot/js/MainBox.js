@@ -379,7 +379,7 @@ function SelectLeague(pokedex) {
                 } 
 				//10: assemble the html and append to the mainbux ul ================================================
                 var picture = "../images/Pokemon/pokemon_icon_" + ThePokemonsID + "_" + pokemonForm + ".png";
-                var li = "<li><div class='MainBoxUL' id=\"" + speciesNameString + ThePokemonsID + PokemonType1 + PokemonType2 + "\" data-toggle='tooltip' data-placement='top' data-trigger='hover' title='" + ThePokemonsID +"'><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3 + "</div></li>";
+                var li = "<li><div class='MainBoxUL' id=\"" + speciesNameString + ThePokemonsID + PokemonType1 + PokemonType2 + "\" data-toggle='tooltip' data-placement='left' data-trigger='hover' data-delay='500' title='" + ThePokemonsID +"'><img class=\"PokemonImage\" src=\"" + picture + "\"/>" + shadowOrPurifiedOrXLBuddy + displayBestIVs + countDiv + PokemonNameDiv + PokemonTypeDiv1 + PokemonTypeDiv2 + PokemonMoveDiv1 + PokemonMoveDiv2 + PokemonMoveDiv3 + "</div></li>";
                 //dynamically paste the html into the view 
                 $(".MainBox ul").append(li);
                 //increase count
