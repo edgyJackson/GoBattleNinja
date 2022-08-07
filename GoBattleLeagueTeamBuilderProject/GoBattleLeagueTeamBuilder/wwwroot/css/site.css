@@ -387,11 +387,11 @@ body {
 
 
 #openBattleLeagueSeasonDetails {
-    margin-top: -30px;
+    margin-top: -20px;
     height: 363px;
     width: 550px;
     background-color: #ADD0E0;
 }
-.showBattleLeagueSchedule {
-    margin: -80px 0px 0px -400px;
+.GoBattleLeagueSeasonDetails {
+    margin: -60px 0px 30px 0px;
 }
