@@ -22,7 +22,6 @@ namespace GoBattleLeagueTeamBuilder
 {
     public class Startup
     {
-        private string connectionString = null;
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -46,9 +45,9 @@ namespace GoBattleLeagueTeamBuilder
             services.AddDbContext<GoBattleLeagueTeamBuilderDBContext>(opts =>
             {
 							//Azure Connection
-							//opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
+							opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
 							//local host connection
-							opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
+							//opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
 							//azure connection
 							//opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
 

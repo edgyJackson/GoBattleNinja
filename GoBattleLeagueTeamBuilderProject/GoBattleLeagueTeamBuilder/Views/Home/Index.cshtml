@@ -21,6 +21,8 @@
         <li>
             <a href="#" id="all">Great League</a>
             <ul class="dropdown">
+                <li><a href="#" id="summer">Summer Cup</a></li>
+                <li><a href="#" id="fighting">Fighting Cup</a></li>
                 <li><a href="#" id="hisui">Hisui Cup</a></li>
                 <li><a href="#" id="kanto">Kanto Cup</a></li>
                 <li><a href="#" id="retro">Retro Cup</a></li>
@@ -70,8 +72,40 @@
         </li>
     </ul>
 </div>
+<input type="button" id="BattleLeagueSeasonDetails" class="btn btn-outline-dark btn-sm showBattleLeagueSchedule" value="See Go Battle League Season 11 Schedule" />
+@*<a href="#" id="GFG" class="shinyButton Gold"><span>Shiny Button</span></a>*@
+<div id="openBattleLeagueSeasonDetails" style="display: none;">
+    <strong>Pokemon Go Battle League Season 11: </strong>
+    <br/>
+    <br/>
+    <strong>June 1 – June 8: Great League & Great League Remix</strong>
+    <br />
+    <strong>June 8 – June 15: Ultra League & <span style="color:brown">Catch Cup (Go Fest Edition)</span></strong>
+    <br/>
+    <strong>June 15 – June 22: Master League & <span style="color:brown">Fossil Cup</span></strong>
+    <br/>
+    <strong>June 22 – June 29: Great League & <span style="color:brown">Retro Cup</span></strong>
+    <br />
+    <strong>June 29 – July 6: Ultra League & <span style="color:brown">Kanto Cup</span></strong>
+    <br/>
+    <strong>July 6 – July 13: Great League, Ultra League & Master League</strong>
+    <br/>
+    <strong>July 13 – July 20: Great League & <span style="color:brown">Flying Cup</span></strong>
+    <br/>
+    <strong>July 20 – July 27: Ultra League & <span style="color:brown">Little Cup Remix</span></strong>
+    <br/>
+    <strong>July 27 – August 3: Master League & <span style="color:brown">Hisui Cup</span></strong>
+    <br/>
+    <strong>August 3 – August 10: Great League & <span style="color:brown">Element Cup</span></strong>
+    <br/>
+    <strong>August 10 – August 17: Ultra League & <span style="color:brown">Summer Cup</span></strong>
+    <br/>
+    <strong>August 17 – August 24: Great League & <span style="color:brown">Fighting Cup</span></strong>
+    <br/>
+    <strong>August 24 – September 1: Great League, Ultra League & Master League</strong>
+</div>
 <div class="text-center">
-		search by pokemon name, type or number
+	<strong>search by pokemon name, type or number</strong>
 	</div>
 @*<div class="shinyBtn">Shiny</div>*@
 <div class="pokemon-search-bar text-center">
@@ -85,5 +119,6 @@
 </div>
 
 @section Scripts {
-    <script src="/js/MainBox.js"></script>    
+    <script src="/js/MainBox.js"></script>
+    <script src="/js/BattleLeagueSchedule.js"></script>
 }
