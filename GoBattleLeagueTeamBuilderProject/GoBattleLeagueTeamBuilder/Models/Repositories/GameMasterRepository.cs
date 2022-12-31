@@ -49,7 +49,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
       var formDictionary = new Dictionary<string,string>()
         {
           {"GALARIAN", "31"},
-          {"ALOLA", "61" },
+          {"ALOLA", "61"},
           {"ALOLAN", "61"},
           {"HISUIAN", "72"}
         };
@@ -62,7 +62,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           form=formDictionary[listPokedexes[i].Form.ToUpper()];
         }
         await _iRepository.AddOrUpdateAsync(listPokedexes[i]);
-        sw.WriteLine("\r\n"+listPokedexes[i].PokemonId+",'"+listPokedexes[i].Name+"','"+listPokedexes[i].Form+"',"+listPokedexes[i].BaseAtk+","+listPokedexes[i].BaseDef+","+listPokedexes[i].BaseSta+",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_" + form + "_shiny.png");
+        sw.WriteLine("\r\n("+listPokedexes[i].PokemonId+",'"+listPokedexes[i].Name+"','"+listPokedexes[i].Form+"',"+listPokedexes[i].BaseAtk+","+listPokedexes[i].BaseDef+","+listPokedexes[i].BaseSta+",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0), Img Path: pokemon_icon_"+listPokedexes[i].PokemonId+"_" + form + "_shiny.png");
       }
       await _AdminUtilities.GetPVPIVSForAllLeagues();
     } 

@@ -31,9 +31,9 @@ namespace GoBattleLeagueTeamBuilder.Controllers {
       _goBattleLeagueTeamBuilderDBContext = goBattleLeagueTeamBuilderDBContext;
     }
 
-		public async Task<IActionResult> IndexAsync() {
+		public /*IActionResult*/ async Task<IActionResult> IndexAsync() {
 			await _IGameMasterRepository.UpdateThePokedexAsync(_IHttpClientFactory);
-			/*_AdminUtilities.GeneratePokedexSeedFileWithBestIVs();*/
+			//_AdminUtilities.GeneratePokedexSeedFileWithBestIVs();
 			return View();
 		}
 
