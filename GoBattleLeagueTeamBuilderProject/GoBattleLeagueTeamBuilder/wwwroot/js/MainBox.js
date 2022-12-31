@@ -16,7 +16,7 @@ $(document).ready(function () {
 });
 
 function errorOnAjax() {
-    console.log("ERROR in ajax request");
+    console.log("ERROR in ajax request. Probably wrong database");
 }
 
 //search function for finding pokemon
