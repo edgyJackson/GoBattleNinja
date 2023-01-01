@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text.Json;
 using System.IO;
+using Castle.Core.Internal;
 
 namespace GoBattleLeagueTeamBuilder.Models.Repositories {
   public class GameMasterRepository:IGameMasterRepository {
@@ -33,7 +34,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
       using var fs = new FileStream(@"./Data/pokemonDataListsJson.json",FileMode.Open,FileAccess.Read);
       pokemonDataLists=await JsonSerializer.DeserializeAsync<PokemonDataLists>(fs,new JsonSerializerOptions { PropertyNameCaseInsensitive=true });
       List<Pokedex> listPokedexes = new();
-      for(int i = 0;i<pokemonDataLists.ListPokemonSettings.Count;i++) {
+      for(int i=0;i<pokemonDataLists.ListPokemonSettings.Count;i++) {
         listPokedexes.Add(new Pokedex {
           PokemonId=int.Parse(pokemonDataLists.ListPokemonSettings[i].templateId.Substring(1,4)),
           Name=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.pokemonId,
@@ -42,6 +43,22 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories {
           BaseDef=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseDefense,
           BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.stats.baseStamina
         });
+        //Check for megas
+        if(!pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides.IsNullOrEmpty()) {
+          for(int j=0;j<pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides.Length;j++) {
+            if(pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides[j].tempEvoId.IsNullOrEmpty()) {
+              continue;
+            }
+            listPokedexes.Add(new Pokedex {
+              PokemonId=int.Parse(pokemonDataLists.ListPokemonSettings[i].templateId.Substring(1,4)),
+              Name=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.pokemonId,
+              Form=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides[j].tempEvoId.Substring(15),
+              BaseAtk=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides[j].stats.baseAttack,
+              BaseDef=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides[j].stats.baseDefense,
+              BaseSta=pokemonDataLists.ListPokemonSettings[i].pokemonSettings.tempEvoOverrides[j].stats.baseStamina
+            });
+          }
+        }
       }
       //Add new pokemon to pokedex and update log files
       using StreamWriter sw = File.AppendText("GameMasterFileUpdateLogs.txt");
