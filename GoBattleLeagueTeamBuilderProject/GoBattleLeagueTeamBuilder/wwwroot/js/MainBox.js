@@ -124,11 +124,6 @@ function SelectLeague(pokedex) {
                     pokemonName = speciesID;
                     pokemonForm = "NO_FORM";
                 }
-                //special cases
-                if (pokemonForm.includes("MEGA")) {
-                    isWeirdName = true;
-                    pokemonForm2 = "NO_FORM";
-                }
                 if (pokemonForm=="ALOLAN") {
                     pokemonForm = "ALOLA";
                 }
