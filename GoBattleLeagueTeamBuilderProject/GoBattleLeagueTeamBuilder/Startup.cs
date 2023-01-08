@@ -44,14 +44,14 @@ namespace GoBattleLeagueTeamBuilder
             //GoBattleLeagueTeamBuilder connection
             services.AddDbContext<GoBattleLeagueTeamBuilderDBContext>(opts =>
             {
-							//Azure Connection
-							opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
-							//local host connection
-							//opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
-							//azure connection
-							//opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
+			    //Azure Connection
+			    opts.UseSqlServer(Configuration.GetConnectionString("GoBattleLeagueTeamBuilderConnectionAzure"));
+			    //local host connection
+			    //opts.UseSqlServer(Configuration["ConnectionStrings:GoBattleLeageTeamBuilderConnection"]);
+			    //azure connection
+			    //opts.UseSqlServer(Configuration.GetConnectionString("SpillTrackerAzureDB"));
 
-						});
+		    });
 
             // Add our custom interfaces and repos for fun Dependency Injection
             services.AddScoped<IPokedexRepository, PokedexRepository>();
