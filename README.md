@@ -1,3 +1,4 @@
+![BackgroudnPoGoBattleLogo-01](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/BackgroudnPoGoBattleLogo-01.png "Logo")
 # Go Battle Ninja
 Pokemon Go team builder, training and simulation tool for players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP), and battle simulations. This program will soon be able to generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
@@ -26,8 +27,8 @@ Pokemon IV's, Charge move Priority and Fast-move timing are hard concepts to und
 - <a href="https://github.com/PokeMiners">PokeMiners</a> - pokemon go assets and the most recent gamemaster json
 - Pokemon Stat product algorythm
 
-![basestatforumla](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/basestatforumla.png "Base Stats")
-![pstatFormula](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/pstatFormula.png "Base Stats")
+![basestatforumla](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/basestatforumla.png "Base Stats + IV's")
+![pstatFormula](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/pstatFormula.png "Stat Product")
 
 # Contributing
 ## Overall
