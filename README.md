@@ -1,4 +1,4 @@
-![BackgroudnPoGoBattleLogo-01-01](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/BackgroudnPoGoBattleLogo-01-01.png "Logo")
+![BackgroudnPoGoBattleLogo](GoBattleLeagueTeamBuilderProject/GoBattleLeagueTeamBuilder/wwwroot/images/BackgroudnPoGoBattleLogo.png "Logo")
 # Go Battle Ninja
 Pokemon Go team builder, training and simulation tool for players who need access to pertinent information related to battling. Enjoy this information and training system that will allow users to calculate IV's as well as study league rankings, "fast-move timing" mechanics, Charge Move Priority(CMP), and battle simulations. This program will soon be able to generate teams and strategies FOR YOU; to help improve your knowledge, skills and performance in this part of the game. 
 
