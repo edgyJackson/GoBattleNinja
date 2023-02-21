@@ -1,8 +1,8 @@
 //Data and variables needed for processing pokemon information
 var speciesNameRegEx = new RegExp("/^\S*/"); 
 var speciesFormRegEx = new RegExp("/\(.+?\)/");
-var pokemonForms = { "MEGA_X": 51, "MEGA_Y": 52, "MEGA": 51, "PIKACHU_FLYING":99,"STEEL":11,"ROCK":11,"PSYCHIC":11,"POISON":11,"ICE":11,"GROUND":11,"GRASS":11,"GHOST":11,"FIRE":11,"FIGHTING":11,"FAIRY":11,"ELECTRIC":11,"DRAGON":11,"DARK":11,"BUG":11,"ORIGINAL_COLOR":11,"ULTRA":11,"DUSK_MANE":11,"DAWN_WINGS":11,"YELLOW":20,"VIOLET":11,"RED":18,"ORANGE":17,"BUSTED":11,"INDIGO":11,"BLUE":16,"GREEN":11,"DISGUISED":11,"HANGRY":11,"NOICE":11,"FULL_BELLY":11,"CROWNED_SWORD":11,"ICE_RIDER":11,"SINGLE_STRIKE":11,"RAPID_STRIKE":11,"ETERNAMAX":11,"CROWNED_SHIELD":11,"PHONY": 11,"ANTIQUE": 11,"LOW_KEY": 11,"AMPED": 11,"STAR": 11,"PHARAOH": 11,"NATURAL": 11,"MATRON": 11,"LA_REINE": 11,"KABUKI": 11,"HEART": 11,"DIAMOND": 11, "DEBUTANTE": 11,"DANDY":11,"SOLO": 11, "SCHOOL": 11,"MIDNIGHT": 11, "MIDDAY": 12,"DUSK":11,"CONFINED":12,"SENSU": 16,"PAU": 19, "POM_POM": 17,"BAILE":18,"ALOLA":61,"HISUIAN":72,"COSTUME_2020":11,"A":11,"2021":11,"VS_2019":11,"FLYING_5TH_ANNIV":11,"COPY_2019": 11, "FALL_2019": 11,"ADVENTURE_HAT_2020":11,"FLYING_OKINAWA":11,"2020": 11,"2022": 11,"S": 11,"SHADOW_RIDER":11,"WATER":21,"EAST_SEA": 12,"WEST_SEA":11,"WINTER_2020": '00',"RED_STRIPED": 11, "BLUE_STRIPED": 12,"GALARIAN_ZEN": 12,"GALARIAN_STANDARD":31,"NORMAL":'00',"GALARIAN": 31, "DEFENSE": 13, "SHADOW": '00', "ALOLAN": 61, "SNOWY": 14, "RAINY": 13, "SUNNY": 12, "ATTACK": 12, "SPEED": 14, "PLANT": 11, "SANDY": 12, "TRASH": 13, "OVERCAST": 11, "SUNSHINE": 12, "WEST": 11, "EAST": 12, "REGULAR": 11, "HEAT": 12, "WASH": 13, "FAN": 15, "FROST": 14, "MOW": 15, "ORIGIN": 12, "ALTERED": 11, "LAND": 11, "SKY": 12, "STANDARD": 11, "ZEN": 12, "SPRING": 11, "SUMMER": 12, "AUTUMN": 13, "WINTER": 14, "INCARNATE": 11, "THERIAN": 12, "WHITE": 12, "BLACK": 13, "ORDINARY": 11, "RESOLUTE": 12, "ARIA": 11, "PIROUETTE": 12, "DOUSE": 12, "BURN": 14, "SHOCK": 13, "CHILL": 15, "ARMORED": 50, "HERO": 11, "UNBOUND": 11, "AVERAGE": 11, "LARGE": 12, "SMALL": 13, "SUPER": 14, "MALE": '00', "FEMALE": '01', "LIBRE": 16, "5TH_ANNIVERSARY": 12, "FLYING": 11, "KARIYUSHI": 13, "ROCK_STAR": 14, "POP_STAR": 15, "JR": '00', "NO_FORM":'00'};
-var LeagueDictionary = { "Electric Cup": "1500", "Love Cup": "1500", "Weather Cup GL": "1500", "Ultra League Holiday Cup":"2500","WillPower Cup": "1500", "Halloween Cup UL": "2500", "Halloween Cup GL": "1500", "Evolution Cup": "1500", "Weather Cup UL": "2500", "Psychic Cup": "1500", "Little Jungle Cup Remix": "500", "Fighting Cup": "1500", "Summer Cup": "1500", "Element Cup": "500", "Hisui Cup": "1500", "Flying Cup": "1500", "Little Cup Remix": "500", "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Mega ML": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Mega UL": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Mega LL": "500","CliffHanger GL":"1500","Mega GL":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master Premier Classic": "10000", "Love Cup": "1500" };
+var pokemonForms = { "PRIMAL": 53,"MEGA_X": 51, "MEGA_Y": 52, "MEGA": 51, "PIKACHU_FLYING":99,"STEEL":11,"ROCK":11,"PSYCHIC":11,"POISON":11,"ICE":11,"GROUND":11,"GRASS":11,"GHOST":11,"FIRE":11,"FIGHTING":11,"FAIRY":11,"ELECTRIC":11,"DRAGON":11,"DARK":11,"BUG":11,"ORIGINAL_COLOR":11,"ULTRA":11,"DUSK_MANE":11,"DAWN_WINGS":11,"YELLOW":20,"VIOLET":11,"RED":18,"ORANGE":17,"BUSTED":11,"INDIGO":11,"BLUE":16,"GREEN":11,"DISGUISED":11,"HANGRY":11,"NOICE":11,"FULL_BELLY":11,"CROWNED_SWORD":11,"ICE_RIDER":11,"SINGLE_STRIKE":11,"RAPID_STRIKE":11,"ETERNAMAX":11,"CROWNED_SHIELD":11,"PHONY": 11,"ANTIQUE": 11,"LOW_KEY": 11,"AMPED": 11,"STAR": 11,"PHARAOH": 11,"NATURAL": 11,"MATRON": 11,"LA_REINE": 11,"KABUKI": 11,"HEART": 11,"DIAMOND": 11, "DEBUTANTE": 11,"DANDY":11,"SOLO": 11, "SCHOOL": 11,"MIDNIGHT": 11, "MIDDAY": 12,"DUSK":11,"CONFINED":12,"SENSU": 16,"PAU": 19, "POM_POM": 17,"BAILE":18,"ALOLA":61,"HISUIAN":72,"COSTUME_2020":11,"A":11,"2021":11,"VS_2019":11,"FLYING_5TH_ANNIV":11,"COPY_2019": 11, "FALL_2019": 11,"ADVENTURE_HAT_2020":11,"FLYING_OKINAWA":11,"2020": 11,"2022": 11,"S": 11,"SHADOW_RIDER":11,"WATER":21,"EAST_SEA": 12,"WEST_SEA":11,"WINTER_2020": '00',"RED_STRIPED": 11, "BLUE_STRIPED": 12,"GALARIAN_ZEN": 12,"GALARIAN_STANDARD":31,"NORMAL":'00',"GALARIAN": 31, "DEFENSE": 13, "SHADOW": '00', "ALOLAN": 61, "SNOWY": 14, "RAINY": 13, "SUNNY": 12, "ATTACK": 12, "SPEED": 14, "PLANT": 11, "SANDY": 12, "TRASH": 13, "OVERCAST": 11, "SUNSHINE": 12, "WEST": 11, "EAST": 12, "REGULAR": 11, "HEAT": 12, "WASH": 13, "FAN": 15, "FROST": 14, "MOW": 15, "ORIGIN": 12, "ALTERED": 11, "LAND": 11, "SKY": 12, "STANDARD": 11, "ZEN": 12, "SPRING": 11, "SUMMER": 12, "AUTUMN": 13, "WINTER": 14, "INCARNATE": 11, "THERIAN": 12, "WHITE": 12, "BLACK": 13, "ORDINARY": 11, "RESOLUTE": 12, "ARIA": 11, "PIROUETTE": 12, "DOUSE": 12, "BURN": 14, "SHOCK": 13, "CHILL": 15, "ARMORED": 50, "HERO": 11, "UNBOUND": 11, "AVERAGE": 11, "LARGE": 12, "SMALL": 13, "SUPER": 14, "MALE": '00', "FEMALE": '01', "LIBRE": 16, "5TH_ANNIVERSARY": 12, "FLYING": 11, "KARIYUSHI": 13, "ROCK_STAR": 14, "POP_STAR": 15, "JR": '00', "NO_FORM":'00'};
+var LeagueDictionary = { "Hoenn Cup": "1500", "Electric Cup": "1500", "Love Cup": "1500", "Weather Cup GL": "1500", "Ultra League Holiday Cup":"2500","WillPower Cup": "1500", "Halloween Cup UL": "2500", "Halloween Cup GL": "1500", "Evolution Cup": "1500", "Weather Cup UL": "2500", "Psychic Cup": "1500", "Little Jungle Cup Remix": "500", "Fighting Cup": "1500", "Summer Cup": "1500", "Element Cup": "500", "Hisui Cup": "1500", "Flying Cup": "1500", "Little Cup Remix": "500", "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Mega ML": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Mega UL": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Mega LL": "500","CliffHanger GL":"1500","Mega GL":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master Premier Classic": "10000", "Love Cup": "1500" };
 var WeirdNameList = ["HAKAMO_O", "HO_OH", "JANGMO_O", "KOMMO_O", "PORYGON_Z", "MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL","NIDORAN_MALE","NIDORAN_FEMALE"];
 var NoHyphenList = ["MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL"];
 $(document).ready(function () {
@@ -150,17 +150,19 @@ function SelectLeague(pokedex) {
                     pokemonForm2 = "POMPOM";
                 }
                 //For debugging
-                if(data[i].speciesId.toUpperCase() == "JANGMO_O") {
+                if(data[i].speciesId.toUpperCase() == "MOLTRES") {
                     console.log("hi");
                 }
-                //5: get the pokemon from the pokedex  ===========================================================
+                var pokedexMon;
+                //5: get the pokemon from the pokedex  ======================[MAJOR VALOTILE ZONE]=====================================
                 if (isWeirdName) {
-                    var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
+                    pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm2);
                 } else {
-                    var pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm);
+                    pokedexMon = pokedex.listPokedex.filter(obj => obj.name == pokemonName && obj.form == pokemonForm);
                 }
+                ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
                 var pokemonFormForFindingPokemonInPokemonDataList = "";
-                if (pokemonForm != "NO_FORM" && !pokemonForm.includes("MEGA")) {
+                if (pokemonForm != "NO_FORM" && !pokemonForm.includes("MEGA") && !pokemonForm.includes("PRIMAL")) {
                     if (isWeirdName) {
                         pokemonFormForFindingPokemonInPokemonDataList = "_" + pokemonForm2;
                     } else {
@@ -171,7 +173,7 @@ function SelectLeague(pokedex) {
                 if (pokemonName.includes("NIDORAN")) {
                     var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.pokemonSettings.pokemonId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
                 } else {
-                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList))[0];
+                    var pokemonDataListMon = pokedex.pokemonDataLists.listPokemonSettings.filter(obj => obj.templateId.includes(pokemonName + pokemonFormForFindingPokemonInPokemonDataList) && obj.templateId.includes(ThePokemonsID))[0];
                 }
                 //7: Get the pokemon moves and format them =============================================================
                 //check for legacy moves
@@ -184,10 +186,18 @@ function SelectLeague(pokedex) {
                     if (pokemonDataListMon.pokemonSettings.eliteCinematicMove.includes(move2)) {
                         move2 = move2 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
                     }
-                    if (move3!="" && pokemonDataListMon.pokemonSettings.eliteCinematicMove.includes(move3)) {
+                    if (move3 != "" && pokemonDataListMon.pokemonSettings.eliteCinematicMove.includes(move3)) {
                         move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
                     }
                 }
+                //Temproary check for precipice blades and origin pulse------------------------------------
+                if (move2.includes("PRECIPICE_BLADES") || move2.includes("ORIGIN_PULSE")) {
+                    move2 = move2 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
+                }
+                if (move3 != "" && move3.includes("PRECIPICE_BLADES") || move3.includes("ORIGIN_PULSE")) {
+                    move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
+                }
+                //-----------------------------------------------------------------------------------------------
                 if (move1.includes("_")) {
                     move1 = move1.replaceAll("_", " ")
                 }
@@ -204,7 +214,7 @@ function SelectLeague(pokedex) {
                 var PokemonMoveDiv3 = "<div class = 'PokemonMoveDiv3'>" + move3 + "</div>";
 
                 //8: Get the pokemon type and add to the div to display the types =====================================
-                if (pokemonForm.includes("MEGA") && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
+                if (pokemonForm.includes("MEGA") || pokemonForm.includes("PRIMAL")  && pokemonDataListMon.pokemonSettings.tempEvoOverrides!=null) {
                     var pokmeonMegaVersionNumber = 0;
                     //Add check for extra mega forms here, mewtwo and charizard are the only ones so far, just add an or "||" to the if statement
                     if (pokemonForm.includes("MEGA_Y")) {
@@ -226,8 +236,7 @@ function SelectLeague(pokedex) {
                 }
 				//9: Get pokemon IV's, XL and Best buddy status =======================================================
                 if(pokedexMon.length == 1 && pokedexMon[0].llatkIv != null) {
-                    //get the pokemons id for the mainbox string concatenation
-                    ThePokemonsID = pokedexMon[0].pokemonId.toString().padStart(3, "0");
+                    //Use the pokemons id for the mainbox string concatenation      
                     pokemonForm = pokemonForms[pokemonForm];
                     //League information switch
                     switch (LeagueSelected) {
@@ -295,6 +304,7 @@ function SelectLeague(pokedex) {
                         case "Weather Cup GL":
                         case "Electric Cup":
                         case "Love Cup":
+                        case "Hoenn Cup":
                             //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
                             var purifiedAttackStat = pokedexMon[0].glatkIv;
                             if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
