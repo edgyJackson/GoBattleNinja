@@ -264,3 +264,7 @@ body {
 .GoBattleLeagueSeasonDetails {
     margin: 20px 0px 30px 0px;
 }
+
+.menu-area li {
+    margin: 0px 2px 0px 2px
+}
