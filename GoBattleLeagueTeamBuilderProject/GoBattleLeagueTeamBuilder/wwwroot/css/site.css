@@ -81,140 +81,8 @@ body {
     color: #000;
 }
 
-.menu-area ul {
-    list-style: none;
-}
-
-.menu-area{
-    display: inline-block;
-    text-align: center;
-    position: relative;
-    margin: 70px 0px 0px 0px;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-.menu-area li:hover {
-    background: #029bd5;
-}
-
-.menu-area > ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: inline-block;
-    background: #000;
-    color: #000;
-}
-
-.menu-area > ul > li {
-    position: relative;
-    cursor: pointer;
-    font-family: poppins;
-    font-size: 14px;
-    letter-spacing: 1px;
-    float: left;
-    width: 136px;
-    height: 50px;
-    line-height: 50px;
-}
-
-
-.dropdown{
-    position: absolute;
-    top: 100%;
-    left:0;
-    width: 100%;
-    padding: 0;
-}
-
-.dropdown li {
-    background: #000;
-    display: none;
-}
-
-.dropdown li:hover{
-    background: #029bd5;
-}
-
-.menu-area li:hover > .dropdown li{
-    display: block;
-}
-
-.menu-area li:hover > .dropdown{
-    perspective: 1000px;
-}
-
-.menu-area li:hover > .dropdown li{
-    transform-origin: top center;
-    opacity: 0;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(1){
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: -150ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(2) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 0ms;
-}
-.menu-area li:hover > .dropdown li:nth-child(3) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 150ms;
-}
-.menu-area li:hover > .dropdown li:nth-child(4) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 300ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(5) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 450ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(6) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 600ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(7) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 750ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(8) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 900ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(9) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 1050ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(10) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 1200ms;
-}
-
-.menu-area li:hover > .dropdown li:nth-child(11) {
-    animation: animate 300ms ease-in-out forwards;
-    animation-delay: 1350ms;
-}
-
-
-@keyframes animate{
-    0%{
-        opacity: 0;
-        transform: rotateX(-90deg);
-    }
-    50%{
-        transform: rotateX(20deg);
-    }
-    100%{
-        opacity: 1;
-        transform: rotateX(0deg);
-    }
+.dropdown-menu {
+    min-width: inherit;
 }
 
 .MainBox {
@@ -394,5 +262,5 @@ body {
     padding-left: 15px;
 }
 .GoBattleLeagueSeasonDetails {
-    margin: -60px 0px 30px 0px;
+    margin: 20px 0px 30px 0px;
 }
