@@ -92,7 +92,6 @@ body {
     align-items: center;
     width: 100%;
     overflow: hidden;
-    background-color: #6F4E37;
     padding: 5px;
     margin: auto;
 }
@@ -104,8 +103,8 @@ body {
     margin: 3px;
     border-style: dashed;
     border-width: 4px;
-    border-color: #D27D2D;
-    background-color: #6F4E37;
+    border-color: white;
+    background-color: darkolivegreen;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

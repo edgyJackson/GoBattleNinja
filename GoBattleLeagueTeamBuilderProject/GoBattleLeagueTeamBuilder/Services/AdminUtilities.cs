@@ -3,6 +3,7 @@ using GoBattleLeagueTeamBuilder.Models.Interfaces;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -37,32 +38,33 @@ namespace GoBattleLeagueTeamBuilder.Services
 
         public async Task LittleLeagueAsync()
         {
-			    foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.LlcP!=null){
-              continue;
-						}
-            var pokedexEntry = pokemon;
-            var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
-            pokedexEntry.LlatkIv = TheIVPerformance.iVS.atkIV;
-            pokedexEntry.LldefIv = TheIVPerformance.iVS.defIV;
-            pokedexEntry.LlstaIv = TheIVPerformance.iVS.staIV;
-            pokedexEntry.Lllevel = TheIVPerformance.level;
-            pokedexEntry.LlcP = TheIVPerformance.cP;
-            pokedexEntry.LlatkStat = TheIVPerformance.stats.atkStat;
-            pokedexEntry.LldefStat = TheIVPerformance.stats.defStat;
-            pokedexEntry.LlstaStat = TheIVPerformance.stats.staStat;
-            pokedexEntry.LlstatProduct = TheIVPerformance.statProduct;
-            await _repo.AddOrUpdateAsync(pokedexEntry);
+			foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
+                /*if(pokemon.LlcP!=null) {
+                    continue;
+			    }*/
+                var pokedexEntry = pokemon;
+                var TheIVPerformance = _pvpIVAPI.GetBestIV(500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
+                pokedexEntry.LlatkIv = TheIVPerformance.iVS.atkIV;
+                pokedexEntry.LldefIv = TheIVPerformance.iVS.defIV;
+                pokedexEntry.LlstaIv = TheIVPerformance.iVS.staIV;
+                pokedexEntry.Lllevel = TheIVPerformance.level;
+                pokedexEntry.LlcP = TheIVPerformance.cP;
+                pokedexEntry.LlatkStat = TheIVPerformance.stats.atkStat;
+                pokedexEntry.LldefStat = TheIVPerformance.stats.defStat;
+                pokedexEntry.LlstaStat = TheIVPerformance.stats.staStat;
+                pokedexEntry.LlstatProduct = TheIVPerformance.statProduct;
+                Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Little League IV's updated :: {pokedexEntry.LlatkStat} : {pokedexEntry.LldefStat} : {pokedexEntry.LlstaStat}");
+                await _repo.AddOrUpdateAsync(pokedexEntry);
 
-			    }          
+			}         
         }
 
         public async Task GreatLeagueAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.GlcP!=null) {
+            /*if(pokemon.GlcP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(1500,(int)pokedexEntry.BaseAtk,(int)pokedexEntry.BaseDef,(int)pokedexEntry.BaseSta,51);
             pokedexEntry.GlatkIv=TheIVPerformance.iVS.atkIV;
@@ -74,6 +76,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.GldefStat=TheIVPerformance.stats.defStat;
             pokedexEntry.GlstaStat=TheIVPerformance.stats.staStat;
             pokedexEntry.GlstatProduct=TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Great League IV's updated :: {pokedexEntry.GlatkStat} : {pokedexEntry.GldefStat} : {pokedexEntry.GlstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }
         }
@@ -81,9 +84,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task GreatLeagueClassicAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.GlclassiccP!=null) {
+            /*if(pokemon.GlclassiccP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(1500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
             pokedexEntry.GlclassicatkIv = TheIVPerformance.iVS.atkIV;
@@ -95,6 +98,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.GlclassicdefStat = TheIVPerformance.stats.defStat;
             pokedexEntry.GlclassicstaStat = TheIVPerformance.stats.staStat;
             pokedexEntry.GlclassicstatProduct = TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Great League Classic IV's updated :: {pokedexEntry.GlclassicatkStat} : {pokedexEntry.GlclassicdefStat} : {pokedexEntry.GlclassicstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }          
         }
@@ -102,9 +106,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task UltraLeagueAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.UlcP!=null) {
+            /*if(pokemon.UlcP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
             pokedexEntry.UlatkIv = TheIVPerformance.iVS.atkIV;
@@ -116,6 +120,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.UldefStat = TheIVPerformance.stats.defStat;
             pokedexEntry.UlstaStat = TheIVPerformance.stats.staStat;
             pokedexEntry.UlstatProduct = TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Ultra League IV's updated :: {pokedexEntry.UlatkStat} : {pokedexEntry.UldefStat} : {pokedexEntry.UlstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }          
         }
@@ -123,9 +128,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task UltraLeagueClassicAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.UlclassiccP!=null) {
+            /*if(pokemon.UlclassiccP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(2500, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
             pokedexEntry.UlclassicatkIv = TheIVPerformance.iVS.atkIV;
@@ -137,15 +142,20 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.UlclassicdefStat = TheIVPerformance.stats.defStat;
             pokedexEntry.UlclassicstaStat = TheIVPerformance.stats.staStat;
             pokedexEntry.UlclassicstatProduct = TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Ultra League Classic IV's updated :: {pokedexEntry.UlclassicatkStat} : {pokedexEntry.UlclassicdefStat} : {pokedexEntry.UlclassicstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }
         }
         public async Task MasterLeagueAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.MlcP!=null) {
+            /*if(pokemon.Name!="GROUDON") { 
+                continue;
+            };*/ //debugging
+
+            /*if(pokemon.MlcP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(10000, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 51);
             pokedexEntry.MlatkIv = TheIVPerformance.iVS.atkIV;
@@ -157,6 +167,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.MldefStat = TheIVPerformance.stats.defStat;
             pokedexEntry.MlstaStat = TheIVPerformance.stats.staStat;
             pokedexEntry.MlstatProduct = TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Master League IV's updated:: {pokedexEntry.MlatkStat} : {pokedexEntry.MldefStat} : {pokedexEntry.MlstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }          
         }
@@ -164,9 +175,9 @@ namespace GoBattleLeagueTeamBuilder.Services
         public async Task MasterLeagueClassicAsync()
         {
           foreach(var pokemon in await _pokedex.GetAllPokemonAsync()) {
-            if(pokemon.MlclassiccP!=null) {
+            /*if(pokemon.MlclassiccP!=null) {
               continue;
-            }
+            }*/
             var pokedexEntry = pokemon;
             var TheIVPerformance = _pvpIVAPI.GetBestIV(10000, (int)pokedexEntry.BaseAtk, (int)pokedexEntry.BaseDef, (int)pokedexEntry.BaseSta, 41);
             pokedexEntry.MlclassicatkIv = TheIVPerformance.iVS.atkIV;                                               
@@ -178,6 +189,7 @@ namespace GoBattleLeagueTeamBuilder.Services
             pokedexEntry.MlclassicdefStat = TheIVPerformance.stats.defStat;                                     
             pokedexEntry.MlclassicstaStat = TheIVPerformance.stats.staStat;                                     
             pokedexEntry.MlclassicstatProduct = TheIVPerformance.statProduct;
+            Debug.WriteLine($"{pokedexEntry.PokemonId} - {pokedexEntry.Name} : Master League Classic IV's updated :: {pokedexEntry.MlclassicatkStat} : {pokedexEntry.MlclassicdefStat} : {pokedexEntry.MlclassicstaStat}" );
             await _repo.AddOrUpdateAsync(pokedexEntry);
           }
         }

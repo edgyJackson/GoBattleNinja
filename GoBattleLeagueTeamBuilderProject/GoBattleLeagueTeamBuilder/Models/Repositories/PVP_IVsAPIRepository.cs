@@ -1,6 +1,7 @@
 ﻿using GoBattleLeagueTeamBuilder.Models.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,7 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
 {
     public class PVP_IVsAPIRepository : IPVP_IVsAPIRepository
     {
-        public void PrintBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        public void PrintBestIV(int league, int baseAtk, int baseDef, int baseSta, double xLStatus)
         {
             List<IVPerformance> IVPerformanceList = GetAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
             IVPerformanceList.OrderBy(o => o.statProduct);
@@ -16,14 +17,18 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
             Console.WriteLine(IVPerformanceList.Take(25));
         }
 
-        public IVPerformance GetBestIV(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        public IVPerformance GetBestIV(int league, int baseAtk, int baseDef, int baseSta, double xLStatus)
         {
             List<IVPerformance> IVPerformanceList = GetAllIVTokens(league, baseAtk, baseDef, baseSta, xLStatus);
-            return IVPerformanceList.OrderByDescending(o => o.statProduct).FirstOrDefault();
+            List<IVPerformance> IVPerformanceListSorted=IVPerformanceList.OrderByDescending(o => o.statProduct).ToList();
+            if(IVPerformanceListSorted[0].statProduct==IVPerformanceListSorted[1].statProduct) {
+                return IVPerformanceListSorted[1];
+            }
+            return IVPerformanceListSorted[0];
           
         }
 
-        private List<IVPerformance> GetAllIVTokens(int league, int baseAtk, int baseDef, int baseSta, float xLStatus)
+        private List<IVPerformance> GetAllIVTokens(int league, int baseAtk, int baseDef, int baseSta, double xLStatus)
         {
             List<IVPerformance> IVPerformanceList = new();
            
@@ -33,6 +38,9 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
                 {               
                     for (int staIV = 0; staIV <= 15; staIV++)
                     {
+                        /*if(staIV == 15 && defIV == 15 && atkIV == 15) {
+                            Debug.WriteLine("hi");
+                        }*/ //debugging
                         IVPerformanceList.Add(GetPerformanceFromIV(league, baseAtk, atkIV, baseDef, defIV, baseSta, staIV, xLStatus));
                     }
                 }
@@ -41,14 +49,14 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
             return IVPerformanceList;
         }
 
-        private IVPerformance GetPerformanceFromIV(int league, int baseAtk, int atkIV, int baseDef, int defIV, int baseSta, int staIV, float xLStatus)
+        private IVPerformance GetPerformanceFromIV(int league, int baseAtk, int atkIV, int baseDef, int defIV, int baseSta, int staIV, double xLStatus)
         {
             IVPerformance bestPerformance = new();
-            for (float level = 1f; level <= xLStatus; level += 0.5f)
+            for (double level = 1f; level <= xLStatus; level += 0.5f)
             {
-                float atkStat = GetStat(level, baseAtk, atkIV);
-                float defStat = GetStat(level, baseDef, defIV);
-                float staStat = GetStat(level, baseSta, staIV);
+                double atkStat = GetStat(level, baseAtk, atkIV);
+                double defStat = GetStat(level, baseDef, defIV);
+                double staStat = GetStat(level, baseSta, staIV);
 
                 int cp = GetCP(atkStat, defStat, staStat);
                 if (league < cp) return bestPerformance;
@@ -65,28 +73,31 @@ namespace GoBattleLeagueTeamBuilder.Models.Repositories
                     cP = cp,
                     stats = new stat()
                     {
-                        atkStat = atkStat,
-                        defStat = defStat,
-                        staStat = (float)Math.Floor(staStat)
+                        atkStat = Math.Round(atkStat,2),
+                        defStat = Math.Round(defStat,2),
+                        staStat = (double)Math.Floor(staStat)
                     },
-                    statProduct = atkStat * defStat * (float)Math.Floor(staStat)
+                    statProduct = Math.Round(atkStat * defStat * (double)Math.Floor(staStat),2)
                 };
+                /*if(level==51) {
+                    Debug.WriteLine("it");
+                }*/ //debugging
                 bestPerformance = currentPerformance;
             }
             return bestPerformance;
         }
 
-        private static int GetCP(float atk, float def, float sta)
+        private static int GetCP(double atk, double def, double sta)
         {
             return (int)(Math.Floor(atk * Math.Sqrt(def)* Math.Sqrt(sta))/10);
         }
 
-        private float GetStat(float level, int baseInt, int iv)
+        private double GetStat(double level, int baseInt, int iv)
         {
             return (baseInt + iv) * CPMultiplyer[level];
         }
 
-        private readonly Dictionary<float, float> CPMultiplyer = new()
+        private readonly Dictionary<double, double> CPMultiplyer = new()
         {
             {1f,    0.094f},
             {1.5f,  0.135137432f},
