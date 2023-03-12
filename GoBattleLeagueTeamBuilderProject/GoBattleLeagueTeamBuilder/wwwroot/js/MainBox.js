@@ -2,7 +2,7 @@
 var speciesNameRegEx = new RegExp("/^\S*/"); 
 var speciesFormRegEx = new RegExp("/\(.+?\)/");
 var pokemonForms = { "PRIMAL": 53,"MEGA_X": 51, "MEGA_Y": 52, "MEGA": 51, "PIKACHU_FLYING":99,"STEEL":11,"ROCK":11,"PSYCHIC":11,"POISON":11,"ICE":11,"GROUND":11,"GRASS":11,"GHOST":11,"FIRE":11,"FIGHTING":11,"FAIRY":11,"ELECTRIC":11,"DRAGON":11,"DARK":11,"BUG":11,"ORIGINAL_COLOR":11,"ULTRA":11,"DUSK_MANE":11,"DAWN_WINGS":11,"YELLOW":20,"VIOLET":11,"RED":18,"ORANGE":17,"BUSTED":11,"INDIGO":11,"BLUE":16,"GREEN":11,"DISGUISED":11,"HANGRY":11,"NOICE":11,"FULL_BELLY":11,"CROWNED_SWORD":11,"ICE_RIDER":11,"SINGLE_STRIKE":11,"RAPID_STRIKE":11,"ETERNAMAX":11,"CROWNED_SHIELD":11,"PHONY": 11,"ANTIQUE": 11,"LOW_KEY": 11,"AMPED": 11,"STAR": 11,"PHARAOH": 11,"NATURAL": 11,"MATRON": 11,"LA_REINE": 11,"KABUKI": 11,"HEART": 11,"DIAMOND": 11, "DEBUTANTE": 11,"DANDY":11,"SOLO": 11, "SCHOOL": 11,"MIDNIGHT": 11, "MIDDAY": 12,"DUSK":11,"CONFINED":12,"SENSU": 16,"PAU": 19, "POM_POM": 17,"BAILE":18,"ALOLA":61,"HISUIAN":72,"COSTUME_2020":11,"A":11,"2021":11,"VS_2019":11,"FLYING_5TH_ANNIV":11,"COPY_2019": 11, "FALL_2019": 11,"ADVENTURE_HAT_2020":11,"FLYING_OKINAWA":11,"2020": 11,"2022": 11,"S": 11,"SHADOW_RIDER":11,"WATER":21,"EAST_SEA": 12,"WEST_SEA":11,"WINTER_2020": '00',"RED_STRIPED": 11, "BLUE_STRIPED": 12,"GALARIAN_ZEN": 12,"GALARIAN_STANDARD":31,"NORMAL":'00',"GALARIAN": 31, "DEFENSE": 13, "SHADOW": '00', "ALOLAN": 61, "SNOWY": 14, "RAINY": 13, "SUNNY": 12, "ATTACK": 12, "SPEED": 14, "PLANT": 11, "SANDY": 12, "TRASH": 13, "OVERCAST": 11, "SUNSHINE": 12, "WEST": 11, "EAST": 12, "REGULAR": 11, "HEAT": 12, "WASH": 13, "FAN": 15, "FROST": 14, "MOW": 15, "ORIGIN": 12, "ALTERED": 11, "LAND": 11, "SKY": 12, "STANDARD": 11, "ZEN": 12, "SPRING": 11, "SUMMER": 12, "AUTUMN": 13, "WINTER": 14, "INCARNATE": 11, "THERIAN": 12, "WHITE": 12, "BLACK": 13, "ORDINARY": 11, "RESOLUTE": 12, "ARIA": 11, "PIROUETTE": 12, "DOUSE": 12, "BURN": 14, "SHOCK": 13, "CHILL": 15, "ARMORED": 50, "HERO": 11, "UNBOUND": 11, "AVERAGE": 11, "LARGE": 12, "SMALL": 13, "SUPER": 14, "MALE": '00', "FEMALE": '01', "LIBRE": 16, "5TH_ANNIVERSARY": 12, "FLYING": 11, "KARIYUSHI": 13, "ROCK_STAR": 14, "POP_STAR": 15, "JR": '00', "NO_FORM":'00'};
-var LeagueDictionary = { "Naiad Cup": "1500", "Justicar Cup": "2500", "Polkadot Cup": "1500", "Ionic Cup": "1500", "Hoenn Cup": "1500", "Electric Cup": "1500", "Love Cup": "1500", "Weather Cup GL": "1500", "Ultra League Holiday Cup": "2500", "WillPower Cup": "1500", "Halloween Cup UL": "2500", "Halloween Cup GL": "1500", "Evolution Cup": "1500", "Weather Cup UL": "2500", "Psychic Cup": "1500", "Little Jungle Cup Remix": "500", "Fighting Cup": "1500", "Summer Cup": "1500", "Element Cup": "500", "Hisui Cup": "1500", "Flying Cup": "1500", "Little Cup Remix": "500", "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Master League: Mega Edition": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Ultra League: Mega Edition": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Little League: Mega Edition": "500", "CliffHanger GL": "1500","Great League: Mega Edition":"1500","Retro Cup": "1500","Championship Series GL": "1500","Go Battle League GL": "1500","Forged Cup": "1500","Firefly Cup": "1500","Colony Cup": "1500","Alchemy Cup": "1500","River Cup":"1500", "Little League": "500", "Great League": "1500", "Great League Remix": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Ultra League Remix": "2500", "Ultra League Premier": "2500", "Ultra League Premier Classic": "2500", "Master League": "10000", "Master League Classic": "10000", "Master League Premier": "10000", "Little League Premier Classic": "500", "Great League Premier Classic": "1500", "Master Premier Classic": "10000", "Love Cup": "1500" };
+var LeagueDictionary = { "Fantasy Cup: Ultra League Edition": "2500", "Catch Cup: Rising Heroes Edition": "1500", "Sunshine Cup: Great League Edition": "1500", "Spring Cup: Great League Edition": "1500", "Mountain Cup: Great League Edition": "1500", "Color Cup: Great League Edition": "1500", "Naiad Cup": "1500", "Justicar Cup": "2500", "Polkadot Cup": "1500", "Ionic Cup": "1500", "Hoenn Cup": "1500", "Electric Cup": "1500", "Love Cup": "1500", "Weather Cup GL": "1500", "Ultra League Holiday Cup": "2500", "WillPower Cup": "1500", "Halloween Cup UL": "2500", "Halloween Cup GL": "1500", "Evolution Cup": "1500", "Weather Cup UL": "2500", "Psychic Cup": "1500", "Little Jungle Cup Remix": "500", "Fighting Cup": "1500", "Summer Cup": "1500", "Element Cup": "500", "Hisui Cup": "1500", "Flying Cup": "1500", "Remix: Little League Edition": "500", "Fossil Cup": "1500", "Go Battle League ML": "10000", "CliffHanger ML": "10000", "Championship Series ML": "10000", "Master League: Mega Edition": "10000", "Go Battle League UL": "2500", "CliffHanger UL": "2500", "Championship Series UL": "2500", "Ultra League: Mega Edition": "2500", "CliffHanger LL": "500", "Championship Series LL": "500", "Go Battle League LL": "500", "Little League: Mega Edition": "500", "CliffHanger GL": "1500", "Great League: Mega Edition": "1500", "Retro Cup": "1500", "Championship Series GL": "1500", "Go Battle League GL": "1500", "Forged Cup": "1500", "Firefly Cup": "1500", "Colony Cup": "1500", "Alchemy Cup": "1500", "River Cup": "1500", "Little League": "500", "Great League": "1500", "Remix: Great League Edition": "1500", "Kanto Cup": "1500", "Sinnoh Cup": "1500", "Holiday Cup": "1500", "Ultra League": "2500", "Remix: Ultra League Edition": "2500", "Premier: Ultra League Edition": "2500", "Premier Classic: Ultra League Edition": "2500", "Master League": "10000", "Classic: Master League Edition": "10000", "Premier: Master League Edition": "10000", "Premier Classic: Little League Edition": "500", "Premier Classic: Great League Edition": "1500", "Premier Classic: Master League Edition": "10000", "Love Cup": "1500" };
 var WeirdNameList = ["HAKAMO_O", "HO_OH", "JANGMO_O", "KOMMO_O", "PORYGON_Z", "MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL","NIDORAN_MALE","NIDORAN_FEMALE"];
 var NoHyphenList = ["MIME_JR", "MR_MIME", "MR_RIME", "TAPU_BULU", "TAPU_FINI", "TAPU_KOKO", "TAPU_LELE", "TYPE_NULL"];
 $(document).ready(function () {
@@ -190,13 +190,13 @@ function SelectLeague(pokedex) {
                         move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
                     }
                 }
-                //Temproary check for precipice blades and origin pulse------------------------------------
+               /* //Temproary check for precipice blades and origin pulse and other unreleased legacy moves------------------------------------
                 if (move2.includes("PRECIPICE_BLADES") || move2.includes("ORIGIN_PULSE")) {
                     move2 = move2 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
                 }
                 if (move3 != "" && move3.includes("PRECIPICE_BLADES") || move3.includes("ORIGIN_PULSE")) {
                     move3 = move3 + "<span class='LegacyMoveStyle'> (LEGACY)</span>";
-                }
+                }*/
                 //-----------------------------------------------------------------------------------------------
                 if (move1.includes("_")) {
                     move1 = move1.replaceAll("_", " ")
@@ -241,7 +241,7 @@ function SelectLeague(pokedex) {
                     //League information switch
                     switch (LeagueSelected) {
                         case "Little League":
-                        case "Little Cup Remix":
+                        case "Remix: Little League Edition":
                         case "Go Battle League LL":
                         case "CliffHanger LL":
                         case "Championship Series LL":
@@ -263,7 +263,7 @@ function SelectLeague(pokedex) {
                             //Get Ivs and add them to the html string to be displayed
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].llcP + " LV: " + pokedexMon[0].lllevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].lldefIv + "/" + pokedexMon[0].llstaIv + "</span></div>";
                             break;
-                        case "Little League Premier Classic":
+                        case "Premier Classic: Little League Edition":
                             //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
                             var purifiedAttackStat = pokedexMon[0].glclassicatkIv;
                             if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
@@ -279,7 +279,7 @@ function SelectLeague(pokedex) {
                         case "Great League":
                         case "Summer Cup":
                         case "Fighting Cup":
-                        case "Great League Remix":
+                        case "Remix: Little League Edition":
                         case "Kanto Cup":
                         case "Holiday Cup":
                         case "Sinnoh Cup":
@@ -309,6 +309,11 @@ function SelectLeague(pokedex) {
                         case "Justicar Cup": 
                         case "Polkadot Cup":
                         case "Ionic Cup":
+                        case "Color Cup: Great League Edition":
+                        case "Mountain Cup: Great League Edition":
+                        case "Spring Cup: Great League Edition":
+                        case "Sunshine Cup: Great League Edition":
+                        case "Catch Cup: Rising Heroes Edition":
                             //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
                             var purifiedAttackStat = pokedexMon[0].glatkIv;
                             if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
@@ -338,8 +343,8 @@ function SelectLeague(pokedex) {
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].glclassiccP + " LV: " + pokedexMon[0].glclassiclevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].glclassicdefIv + "/" + pokedexMon[0].glclassicstaIv + "</span></div>";
                             break;
                         case "Ultra League":
-                        case "Ultra League Remix":
-                        case "Ultra League Premier":
+                        case "Remix: Ultra League Edition":
+                        case "Premier: Ultra League Edition":
                         case "Go Battle League UL":
                         case "CliffHanger UL":
                         case "Championship Series UL":
@@ -347,6 +352,7 @@ function SelectLeague(pokedex) {
                         case "Weather Cup UL":
                         case "Halloween Cup UL":
                         case "Ultra League Holiday Cup":
+                        case "Fantasy Cup: Ultra League Edition":
                             //set attack to 2 if pokemon is purified and its bestIV attack stack is less than 2
                             var purifiedAttackStat = pokedexMon[0].ulatkIv;
                             if (shadowOrPurifiedOrXLBuddy.includes("ic_purified")) {
@@ -376,7 +382,7 @@ function SelectLeague(pokedex) {
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].ulclassiccP + " LV: " + pokedexMon[0].ulclassiclevel + " <span class='IVStyle'>" + purifiedAttackStat + "/" + pokedexMon[0].ulclassicdefIv + "/" + pokedexMon[0].ulclassicstaIv + "</span></div>";
                             break;
                         case "Master League":
-                        case "Master League Premier":
+                        case "Premier: Master League Edition":
                         case "Go Battle League ML":
                         case "CliffHanger ML":
                         case "Championship Series ML":
@@ -385,8 +391,8 @@ function SelectLeague(pokedex) {
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/xlgraphic.png\" class=\"XLDiv\"/>" + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].mlcP + " LV: " + 51 + " <span class='IVStyle'>" + pokedexMon[0].mlatkIv + "/" + pokedexMon[0].mldefIv + "/" + pokedexMon[0].mlstaIv + "</span></div>";
                             break;
-                        case "Master League Classic":
-                        case "Master Premier Classic":
+                        case "Classic: Master League Edition":
+                        case "Premier Classic: Master League Edition":
                             shadowOrPurifiedOrXLBuddy = shadowOrPurifiedOrXLBuddy + "<img src=\"../images/Pokemon/buddy_crown_icon.png\" class=\"BestBuddy\"/>";
                             displayBestIVs = "<div class='BestIVDiv'>CP: " + pokedexMon[0].mlclassiccP + " LV: " + 41 + " <span class='IVStyle'>" + pokedexMon[0].mlclassicatkIv + "/" + pokedexMon[0].mlclassicdefIv + "/" + pokedexMon[0].mlclassicstaIv + "</span></div>";
                             break;
