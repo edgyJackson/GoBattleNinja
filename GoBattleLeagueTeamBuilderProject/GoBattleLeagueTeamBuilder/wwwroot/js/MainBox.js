@@ -150,7 +150,7 @@ function SelectLeague(pokedex) {
                     pokemonForm2 = "POMPOM";
                 }
                 //For debugging
-                if(data[i].speciesId.toUpperCase() == "MOLTRES") {
+                if(data[i].speciesId.toUpperCase() == "MAGNEZONE") {
                     console.log("hi");
                 }
                 var pokedexMon;
